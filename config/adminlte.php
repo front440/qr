@@ -313,12 +313,12 @@ return [
         ],
         [
             'text'        => 'Inicio',
-            'url'         => 'admin/pages',
+            'url'         => 'admin/home',
             'icon'        => 'far fa-fw fa-file',
         ],
-        ['header' => 'ALUMNOS'],
+        ['header' => 'REGISTROS'],
         [
-            'text'    => 'Alumnos',
+            'text'    => 'Registros',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -331,6 +331,12 @@ return [
                     'url'  => '#',
                 ],
             ],
+        ],
+        ['header' => 'ALUMNOS'],
+        [
+            'text'    => 'Alumnos',
+            'icon'    => 'fas fa-fw fa-share',
+            'url'  => 'admin/user',
         ],
         ['header' => 'account_settings'],
         [

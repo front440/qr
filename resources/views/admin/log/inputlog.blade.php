@@ -30,14 +30,14 @@
 
 
 
-                    @foreach ($registrosEntrada as $item)
+                    {{-- @foreach ($registrosEntrada as $registro)
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <th scope="row">{{ $registro->fecha }}</th>
+                            <td>{{ $registro->fecha }}</td>
+                            <td>{{ $registro->type }}</td>
+                            <td>{{ $registro->id_user }}</td>
                         </tr>
-                    @endforeach
+                    @endforeach --}}
 
                 </tbody>
             </table>
