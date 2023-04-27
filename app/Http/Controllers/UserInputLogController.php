@@ -16,9 +16,9 @@ class UserInputLogController extends Controller
     public function index()
     {
         
-        $registrosEntrada = UserLog::where('type', '=', '1');        
-        // $registrosEntrada = UserLog::all();        
-        // dd($registrosEntrada);
+        $registrosEntrada = UserLog::where('type', '=', '1');
+        
+        
 
         return view('admin.log.inputlog', compact($registrosEntrada));
     }
