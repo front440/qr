@@ -313,12 +313,12 @@ return [
         ],
         [
             'text'        => 'Inicio',
-            'url'         => 'admin/home',
+            'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
         ],
-        ['header' => 'REGISTROS'],
+        ['header' => 'ALUMNOS'],
         [
-            'text'    => 'Registros',
+            'text'    => 'Alumnos',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -326,17 +326,18 @@ return [
                     'url'  => '/admin/alumnos/entradas',
                 ],
 
+
+                [
+                    'text' => 'Tabla de datos',
+                    'url'  => '/admin/alumnos/datos',
+                ],
+
+
                 [
                     'text' => 'Registros de salida',
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'ALUMNOS'],
-        [
-            'text'    => 'Alumnos',
-            'icon'    => 'fas fa-fw fa-share',
-            'url'  => 'admin/user',
         ],
         ['header' => 'account_settings'],
         [

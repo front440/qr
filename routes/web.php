@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserInputLogController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -49,7 +50,8 @@ Route::group([
 ], function () {
     Route::get('/home', [AdminController::class, 'index']);
     Route::get('/alumnos/entradas', [UserInputLogController::class, 'index']);
-
+    Route::get('/alumnos/datos', [UserController::class, 'index']);
+    
 
     
 });
