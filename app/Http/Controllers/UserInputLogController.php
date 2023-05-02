@@ -16,6 +16,7 @@ class UserInputLogController extends Controller
     public function index()
     {
 
+        $usuarios = User::all();
         $registrosEntrada = UserLog::where('type', '=', '1');
         $registrosEntrada = UserLog::all();
         $registrosEntrada = \DB::table('users_logs')
@@ -23,7 +24,7 @@ class UserInputLogController extends Controller
                             ->get();
         // dd($registrosEntrada);
 
-        return view('admin.log.inputlog', ["registrosEntrada" => $registrosEntrada]);
+        return view('admin.log.inputlog', ["registrosEntrada" => $registrosEntrada, "usuarios" => $usuarios]);
     }
 
     /**
