@@ -20,24 +20,28 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Acciones</th>
+
                     </tr>
                 </thead>
                 <tbody>
 
 
 
-                    {{-- @foreach ($registrosEntrada as $registro)
+                    @foreach ($registrosEntrada as $registro)
                         <tr>
-                            <th scope="row">{{ $registro->fecha }}</th>
-                            <td>{{ $registro->fecha }}</td>
-                            <td>{{ $registro->type }}</td>
-                            <td>{{ $registro->id_user }}</td>
+                            <td>{{ DB::table('users')->find($registro->id_user)->name }}</td>
+                            <td scope="row">{{ $registro->date }}</td>
+                            <td> Entrada</td>
+                            <td>
+                                <i class="bi bi-pencil"></i>
+                                <i class="bi bi-x-circle"></i>
+                            </td>
                         </tr>
-                    @endforeach --}}
+                    @endforeach
 
                 </tbody>
             </table>

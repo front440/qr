@@ -15,12 +15,15 @@ class UserInputLogController extends Controller
      */
     public function index()
     {
-        
-        $registrosEntrada = UserLog::where('type', '=', '1');        
-        // $registrosEntrada = UserLog::all();        
+
+        $registrosEntrada = UserLog::where('type', '=', '1');
+        $registrosEntrada = UserLog::all();
+        $registrosEntrada = \DB::table('users_logs')
+                            ->where('type', '=', '1')                            
+                            ->get();
         // dd($registrosEntrada);
 
-        return view('admin.log.inputlog', compact($registrosEntrada));
+        return view('admin.log.inputlog', ["registrosEntrada" => $registrosEntrada]);
     }
 
     /**

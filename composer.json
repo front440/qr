@@ -15,7 +15,8 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "simplesoftwareio/simple-qrcode": "~2"
+        "simplesoftwareio/simple-qrcode": "~2",
+        "twbs/bootstrap-icons": "^1.10"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

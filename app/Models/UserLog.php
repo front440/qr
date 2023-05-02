@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserLog extends Model
 {
+
+    protected $table = "users_logs";
     /**
      * The attributes that are mass assignable.
      *
