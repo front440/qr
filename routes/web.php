@@ -51,6 +51,8 @@ Route::group([
     Route::get('/home', [AdminController::class, 'index']);
     Route::get('/alumnos/entradas', [UserInputLogController::class, 'index']);
     Route::get('/alumnos/datos', [UserController::class, 'index']);
+
+    Route::post('/alumnos/entradas/add', [UserInputLogController::class, 'store'])->name('entrada.store');
     
 
     

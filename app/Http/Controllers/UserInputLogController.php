@@ -45,7 +45,11 @@ class UserInputLogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return UserLog::create([
+            'date' => $request->fecha,
+            'type' => $request->tipo,
+            'id_user' => $request->usuario,
+        ]);
     }
 
     /**

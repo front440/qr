@@ -14,49 +14,52 @@
     <!-- Modal Añadir -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Añadir entrada</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+        <form action="" id="MyForm">
+            {{ csrf_field() }}
+            <div class="modal-dialog" role="document">
+        </form>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Añadir entrada</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-12">
+                        <label for="usuario">Usuario</label>
+                        <select class="form-control" id="usuario" name="usuario">
+                            @foreach ($usuarios as $usuario)
+                                <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="form-group col-12">
-                            <label for="usuario">Usuario</label>
-                            <select class="form-control" id="usuario">
-                                @foreach ($usuarios as $usuario)
-                                    <option value="{{ $usuario->id}}">{{ $usuario->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="form-group col-6">
-                            <label for="tipo">tipo</label>
-                            <select class="form-control" name="tipo" id="tipo">
-                                <option value="0" selected>Entrada</option>
-                                <option value="1">Entrada</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="fecha">fecha </label>
-                            <input type="date" class="form-control" placeholder="Color texto" id="fecha"
-                                value="">
-                        </div>
-                    </div>
-                    
 
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="tipo">tipo</label>
+                        <select class="form-control" name="tipo" id="tipo">
+                            <option value="0" selected>Salida</option>
+                            <option value="1">Entrada</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="fecha">fecha </label>
+                        <input type="datetime-local" class="form-control" placeholder="Color texto" id="fecha" name="fecha"
+                            value="">
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
-                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="submit">Guardar Cambios</button>
             </div>
         </div>
+    </div>
     </div>
     <!-- Modal Añadir -->
 
@@ -113,6 +116,7 @@
             $('#table').DataTable({
                 responsive: true,
                 autoWidth: false,
+                // traducción de DataTables
                 language: {
                     "search": "Buscar",
                     "lengthMenu": "Mostrar _MENU_  registros por página",
@@ -125,6 +129,25 @@
                     }
                 }
             });
+
+            $('#submit').click(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: "{{ route('entrada.store') }}",
+                    type: "post",
+                    dataType: "json",
+                    data: $("#MyForm").serialize(),
+                    success: function(response) {
+                        $('#myForm')[0].reset();
+                        console.log(response);
+                        table.ajax.reload();
+                    }
+                })
+            })
+
+
+
         });
     </script>
 @stop

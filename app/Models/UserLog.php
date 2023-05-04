@@ -19,7 +19,6 @@ class UserLog extends Model
         'date',
         'type',
         'id_user',
-        'updated_at',
-        'created_at',
+
     ];
 }
