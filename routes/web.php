@@ -53,6 +53,8 @@ Route::group([
     Route::get('/alumnos/datos', [UserController::class, 'index']);
 
     Route::post('/alumnos/entradas/add', [UserInputLogController::class, 'store'])->name('entrada.store');
+
+    Route::get('/datatables/user-inputs', [UserInputLogController::class, 'get'])->name('entrada.get');
     
 
     

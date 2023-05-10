@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "simplesoftwareio/simple-qrcode": "~2",
-        "twbs/bootstrap-icons": "^1.10"
+        "twbs/bootstrap-icons": "^1.10",
+        "yajra/laravel-datatables-oracle": "9.21.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
