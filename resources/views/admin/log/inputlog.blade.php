@@ -3,13 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('plugins.Datatables', true)
+@section('plugins.Sweetalert2', true)
 
 @section('content_header')
-    <h1>Input log</h1>
+    <h1>Registro</h1>
 @stop
 
 @section('content')
-
 
     <!-- Modal Añadir -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -68,7 +68,7 @@
 
     <div class="card">
         <div class="card-header">
-            Registros de entrada
+            Registros
         </div>
         <div class="card-body">
             <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">Añadir</button>
@@ -81,24 +81,10 @@
                         <th scope="col">Usuario</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Tipo</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
-
-
-
-                    @foreach ($registrosEntrada as $registro)
-                        <tr>
-                            <td>{{ DB::table('users')->find($registro->id_user)->name }}</td>
-                            <td scope="row">{{ $registro->date }}</td>
-                            <td> Entrada</td>
-                            <td>
-                                <i class="bi bi-pencil"></i>
-                                <i class="bi bi-x-circle"></i>
-                            </td>
-                        </tr>
-                    @endforeach
 
                 </tbody>
             </table>
@@ -136,7 +122,7 @@
                         "last": "Último"
                     }
                 },
-                "ajax": "{{ route('entrada.get') }}",
+                "ajax": "{{ route('salida.get') }}",
                 "columns": [{
                         data: "id"
                     },
@@ -159,8 +145,7 @@
                     {
                         "data": null,
                         render: function(data, type, row) {
-                            return '<button data-id="${row.id}" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" id="edit"><i class="fa fa-edit"></i></button>' +
-                                '<button data-id="${row.id}" class="btn btn-danger" id="delete"><i class="fa fa-trash"></i></button>';
+                            return '<button data-id="${row.id}" class="btn btn-danger delete"><i class="fa fa-trash"></i></button>';
                         }
                     },
 
@@ -183,6 +168,36 @@
                     }
                 });
             });
+
+
+            $(".delete").each((ele) => {
+                $(this).click(() => {
+                    console.log("hola");
+                });
+            })
+
+
+            for (ele in document.getElementsByClassName("delete")) {
+                this.addEventListener("click", () => {
+                    Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: "Este cambio no podrás revertirlo.",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: '¡Si!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                '¡Borrado!',
+                                'Has borrado la entrada',
+                                'success'
+                            )
+                        }
+                    })
+                })
+            }
 
 
         });

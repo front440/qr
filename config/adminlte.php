@@ -325,18 +325,15 @@ return [
                     'text' => 'Registros de Entradas',
                     'url'  => '/admin/alumnos/entradas',
                 ],
-
-
+                [
+                    'text' => 'Registros de salida',
+                    'url'  => '/admin/alumnos/salidas',
+                ],
                 [
                     'text' => 'Tabla de datos',
                     'url'  => '/admin/alumnos/datos',
                 ],
-
-
-                [
-                    'text' => 'Registros de salida',
-                    'url'  => '#',
-                ],
+                
             ],
         ],
         ['header' => 'account_settings'],
@@ -459,7 +456,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

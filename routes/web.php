@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserInputLogController;
+use App\Http\Controllers\UserOutLogController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -50,11 +51,14 @@ Route::group([
 ], function () {
     Route::get('/home', [AdminController::class, 'index']);
     Route::get('/alumnos/entradas', [UserInputLogController::class, 'index']);
+    Route::get('/alumnos/salidas', [UserOutLogController::class, 'index']);
+
     Route::get('/alumnos/datos', [UserController::class, 'index']);
 
     Route::post('/alumnos/entradas/add', [UserInputLogController::class, 'store'])->name('entrada.store');
 
     Route::get('/datatables/user-inputs', [UserInputLogController::class, 'get'])->name('entrada.get');
+    Route::get('/datatables/user-outs', [UserOutLogController::class, 'get'])->name('salida.get');
     
 
     
