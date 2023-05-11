@@ -114,27 +114,14 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            // $('#table').DataTable({
-            //     responsive: true,
-            //     autoWidth: false,
-            //     // traducción de DataTables
-            //     language: {
-            //         "search": "Buscar",
-            //         "lengthMenu": "Mostrar _MENU_  registros por página",
-            //         "info": "Mostrando página _PAGE_ de _PAGES_",
-            //         "paginate": {
-            //             "previous": "Anterior",
-            //             "next": "Siguiente",
-            //             "first": "Primero",
-            //             "last": "Último"
-            //         }
-            //     }
-            // });
 
+            let table = $('#table');
 
-            
+            setInterval(() => {
+                table.DataTable().ajax.reload();
+            }, 3000);
 
-            table = $('#table').DataTable({
+            table.DataTable({
                 responsive: true,
                 autoWidth: false,
                 // traducción de DataTables
