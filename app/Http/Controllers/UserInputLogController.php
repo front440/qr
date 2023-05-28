@@ -16,7 +16,7 @@ class UserInputLogController extends Controller
     public function index()
     {
         //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
-        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC");
+        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 1 ORDER BY ul.date ASC");
         // dd($query);
 
         // return datatables()->of($query)->toJson();
@@ -107,9 +107,22 @@ class UserInputLogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $result = UserLog::find($request->id);
+
+        if ($result) {
+            return response()->json([
+                'message' => "Data Found",
+                "code"    => 200,
+                "data"    => $result
+            ]);
+        } else {
+            return response()->json([
+                'message' => "Internal Server Error",
+                "code"    => 500
+            ]);
+        }
     }
 
     /**
@@ -119,9 +132,27 @@ class UserInputLogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // dd("EE");
+        $input = UserLog::find($request->id);
+        dd($request);
+        $input->date = $request->date;
+        $input->type = $request->type;
+        $input->id_user = $request->user;
+
+        if ($input) {
+            return response()->json([
+                'message' => "Data Found",
+                "code"    => 200,
+                "data"    => $input
+            ]);
+        } else {
+            return response()->json([
+                'message' => "Internal Server Error",
+                "code"    => 500
+            ]);
+        }
     }
 
     /**
@@ -142,10 +173,10 @@ class UserInputLogController extends Controller
      */
     public function get()
     {
-       //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
-       $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC");
-       // dd($query);
+        //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
+        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC");
+        // dd($query);
 
-       return datatables()->of($query)->toJson();
+        return datatables()->of($query)->toJson();
     }
 }

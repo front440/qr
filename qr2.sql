@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-04-2023 a las 18:19:12
+-- Tiempo de generación: 28-05-2023 a las 11:36:15
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -475,16 +475,28 @@ CREATE TABLE `users_logs` (
   `id` int(9) NOT NULL,
   `date` datetime NOT NULL,
   `type` int(11) NOT NULL,
-  `id_user` int(11) DEFAULT NULL
+  `id_user` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `users_logs`
 --
 
-INSERT INTO `users_logs` (`id`, `date`, `type`, `id_user`) VALUES
-(13, '2023-04-16 13:52:14', 1, 7),
-(14, '2023-04-16 14:51:30', 1, 7);
+INSERT INTO `users_logs` (`id`, `date`, `type`, `id_user`, `created_at`, `updated_at`) VALUES
+(13, '2023-04-16 13:52:14', 1, 8, NULL, NULL),
+(14, '2023-04-16 14:51:30', 1, 7, NULL, NULL),
+(15, '2023-05-04 00:00:00', 0, 7, '2023-05-04 00:00:00', '2023-05-04 00:00:00'),
+(16, '2023-05-04 00:00:00', 0, 7, '2023-05-04 20:29:59', '2023-05-04 20:29:59'),
+(17, '2023-05-04 00:15:00', 0, 7, '2023-05-04 20:40:02', '2023-05-04 20:40:02'),
+(18, '2023-05-04 20:45:00', 1, 7, '2023-05-04 20:41:22', '2023-05-04 20:41:22'),
+(19, '2023-09-08 18:13:00', 1, 7, '2023-05-09 16:13:52', '2023-05-09 16:13:52'),
+(20, '2023-05-10 18:30:00', 0, 7, '2023-05-10 17:15:02', '2023-05-10 17:15:02'),
+(21, '2023-05-10 19:30:00', 0, 7, '2023-05-10 17:16:24', '2023-05-10 17:16:24'),
+(22, '2023-05-10 20:30:00', 0, 7, '2023-05-10 17:23:27', '2023-05-10 17:23:27'),
+(23, '2023-05-11 22:09:57', 0, 7, NULL, NULL),
+(24, '2023-05-11 22:10:44', 0, 7, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -703,7 +715,7 @@ ALTER TABLE `users_addresses`
 -- AUTO_INCREMENT de la tabla `users_logs`
 --
 ALTER TABLE `users_logs`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restricciones para tablas volcadas

@@ -410,12 +410,11 @@ return [
                     'location' => '//cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap4.min.js',
                 ],
 
-
-                [
-                    'type' => 'css',
-                    'asset' => true,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css',
-                ],
+                // [
+                //     'type' => 'css',
+                //     'asset' => false,
+                //     'location' => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css',
+                // ],
                 [
                     'type' => 'css',
                     'asset' => true,
