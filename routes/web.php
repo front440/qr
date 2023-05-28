@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserInputLogController;
 use App\Http\Controllers\UserOutLogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -53,15 +54,25 @@ Route::group([
     Route::get('/alumnos/entradas', [UserInputLogController::class, 'index']);
     Route::get('/alumnos/salidas', [UserOutLogController::class, 'index']);
 
+    
     Route::get('/alumnos/datos', [UserController::class, 'index']);
 
     Route::post('/alumnos/entradas/add', [UserInputLogController::class, 'store'])->name('entrada.store');
-
+    
     Route::get('/datatables/user-inputs', [UserInputLogController::class, 'get'])->name('entrada.get');
     Route::post('/datatables/user-inputs-edit', [UserInputLogController::class, 'edit'])->name('entrada.edit'); // Edit input
     Route::post('/datatables/user-inputs-update', [UserInputLogController::class, 'update'])->name('entrada.update'); // Update input
     Route::get('/datatables/user-outs', [UserOutLogController::class, 'get'])->name('salida.get');
     
+});
 
-    
+//Routes user
+Route::group([
+    'middleware' => 'user',
+    'prefix' => 'user',
+    'namespace' => 'user'
+], function () {
+    Route::get('/home', [UsersController::class, 'index']);
+    Route::get('/settings', [UsersController::class, 'profile']);
+    Route::post('/update/{id}', [UsersController::class, 'update'])->name('user.update');
 });
