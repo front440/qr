@@ -88,19 +88,18 @@ class UsersController extends Controller
             'error' => 'Unable to locate the user'
         ], 404);
     }
-
-    $user->update([
-        'email' => $request->email,
-        'phone' => $request->phone,
-        'password' => Hash::make($request['password']),
-    ]);
-
-    return redirect()->back(); // Redirecciona a la página actual
-
-    // Si prefieres redireccionar a una ruta específica, puedes usar:
-    // return redirect()->route('nombre_de_la_ruta');
+    if($request->password == $request->password_confirmation){
+        $user->update([
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect('/user/home')->with("status", "Usuario modificado correctamente"); // Redirecciona a la página actual
+        
+    } else{
+        return 'No se ha hecho';
     }
-
+    }
 
     /**
      * @param  int  $id
