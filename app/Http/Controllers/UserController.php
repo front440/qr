@@ -111,4 +111,19 @@ class UserController extends Controller
         dd($value);
         return view("admin.salida", compact($value));
     }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function get()
+    {
+       //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
+       $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id AND ul.type = 0 ORDER BY ul.date ASC");
+       // dd($query);
+       $user = User::all();
+       
+       return datatables()->of($user)->toJson();
+    }
 }

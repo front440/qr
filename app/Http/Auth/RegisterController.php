@@ -90,7 +90,7 @@ class RegisterController extends Controller
 //            'city' => $this->normalize($data['city']),
 //            'zip' => $data['zip'],
 //            'province' => $data['province'],
-            'role' => "student",
+            'role' => "user",
         ]);
     }
 }
