@@ -108,7 +108,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            id="close">Cerrar</button>
+                            id="closeEdit">Cerrar</button>
                         <button type="button" class="btn btn-primary" id="submitEditar">Guardar Cambios</button>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
     <script>
         $(document).ready(function() {
 
-            let table = $('#table');
+            table = $('#table');
             usuarios = @json($usuarios); // La variable users contiene todos los usuarios
             // setInterval(() => {
             //     table.DataTable().ajax.reload();
@@ -174,12 +174,13 @@
                         $("#MyForm")[0].reset();
                         console.log(response);
                         $("#close").click();
-                        table.ajax.reload();
+                        table.DataTable().ajax.reload();
                     }
                 });
             });
             // End Save Input
 
+            // Datatable
             table.DataTable({
                 responsive: true,
                 autoWidth: false,
@@ -218,7 +219,8 @@
                     {
                         "data": null,
                         render: function(data, type, row) {
-                            return '<button class="btn btn-danger delete" data-id="' + row.id +
+                            return '<button id="delete" class="btn btn-danger delete" data-id="' +
+                                row.id +
                                 '"><i class="fa fa-trash"></i></button>' +
                                 '<button class="btn btn-info edit" data-id="' + row.id +
                                 '" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-edit"></i></button>';
@@ -227,6 +229,7 @@
 
                 ]
             });
+            // End Datatable
 
             // Edit
             $(document).on('click', '.edit', function() {
@@ -282,21 +285,34 @@
                     type: "post",
                     dataType: "json",
                     data: $("#formEdit").serialize(),
-                    // data: {
-                    //     "_token": "{{ csrf_token() }}",
-                    //     "data": $("#formEdit").serialize(),
-                    // },
                     success: function(response) {
-                        // $("#modalEdit")[0].reset();
+                        $("#formEdit")[0].reset();
                         console.log(response);
-                        // $("#close").click();
-                        // table.ajax.reload();
-
-
+                        $("#closeEdit").click();
+                        table.DataTable().ajax.reload();
                     }
                 });
             });
             // End Save Edit Input
+
+            // Delete Log
+            $(document).on('click', '#delete', function() {
+                Swal.fire({
+                    title: '¿Quieres borrar el registro?',
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Borrar',
+                    denyButtonText: `No borrar`,
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire('Borrado', '', 'success');
+                    } else if (result.isDenied) {
+                        Swal.fire('El registro no ha sido borrado', '', 'info');
+                    }
+                })
+            })
+            // End Delete Log
 
 
         }); // ready
