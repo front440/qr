@@ -178,4 +178,14 @@ class UsersController extends Controller
         
         return view("user.profile",["user" => $user,]);
     }
+
+    public function pass(Request $request)
+    {
+        $user = User::find(\Auth::user()->id);
+        $value = $request->session()->get('key');
+        //dd($user);
+
+        
+        return view("user.changePass",["user" => $user,]);
+    }
 }

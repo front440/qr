@@ -79,6 +79,7 @@ Route::group([
 ], function () {
     Route::get('/home', [UsersController::class, 'index']);
     Route::get('/settings', [UsersController::class, 'profile']);
+    Route::get('/change_password', [UsersController::class, 'pass']);
     Route::post('/update/{id}', [UsersController::class, 'update'])->name('user.update');
 
     Route::get('/qr/entrada', [QrController::class, 'entrada']);
