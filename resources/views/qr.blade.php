@@ -11,12 +11,7 @@
 @stop
 
 @section('content')
-<div class="card-header">
-                <h2>QR</h2>
-            </div>
-            <div class="card-body">
-                {!! Qr::size(300)->generate('https://techvblogs.com/blog/generate-qr-code-laravel-9') !!}
-            </div>
-        </div>
-    </div>    </div>
+    <div class="card-body">
+        {!! QrCode::size(400)->generate($datos) !!}
+    </div>
 @stop
