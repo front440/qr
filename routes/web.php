@@ -54,6 +54,9 @@ Route::group([
     Route::get('/alumnos/entradas', [UserInputLogController::class, 'index']);
     Route::get('/alumnos/salidas', [UserOutLogController::class, 'index']);
 
+    Route::get('/qr/entrada', [QrController::class, 'index']);
+    Route::get('/qr/salida', [QrController::class, 'index']);
+
     
     Route::get('/alumnos/datos', [UserController::class, 'index']);
 
@@ -75,4 +78,8 @@ Route::group([
     Route::get('/home', [UsersController::class, 'index']);
     Route::get('/settings', [UsersController::class, 'profile']);
     Route::post('/update/{id}', [UsersController::class, 'update'])->name('user.update');
+
+    Route::get('/qr/entrada', [QrController::class, 'index']);
+    Route::get('/qr/salida', [QrController::class, 'index']);
+
 });
