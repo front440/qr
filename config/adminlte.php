@@ -313,7 +313,7 @@ return [
         ],
         [
             'text'        => 'Inicio',
-            'url'         => 'admin/pages',
+            'url'         => 'user/home',
             'icon'        => 'far fa-fw fa-file',
         ],
         ['header' => 'ALUMNOS'],
