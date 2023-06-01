@@ -5,6 +5,7 @@ use App\Http\Controllers\UserInputLogController;
 use App\Http\Controllers\UserOutLogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\QrController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -41,8 +42,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/entrada', [App\Http\Controllers\UserController::class, 'entrada']);
-Route::get('/salida', [App\Http\Controllers\UserController::class, 'salida']);
+Route::get('/entrada', [App\Http\Controllers\UserController::class, 'index']);
+Route::get('/salida', [App\Http\Controllers\UserController::class, 'index']);
 
 //Routes admin
 Route::group([
@@ -53,6 +54,9 @@ Route::group([
     Route::get('/home', [AdminController::class, 'index']);
     Route::get('/alumnos/entradas', [UserInputLogController::class, 'index']);
     Route::get('/alumnos/salidas', [UserOutLogController::class, 'index']);
+
+    Route::get('/qr/entrada', [QrController::class, 'entrada']);
+    Route::get('/qr/salida', [QrController::class, 'salida']);
 
     
     Route::get('/alumnos/datos', [UserController::class, 'index']);
@@ -76,4 +80,8 @@ Route::group([
     Route::get('/home', [UsersController::class, 'index']);
     Route::get('/settings', [UsersController::class, 'profile']);
     Route::post('/update/{id}', [UsersController::class, 'update'])->name('user.update');
+
+    Route::get('/qr/entrada', [QrController::class, 'entrada']);
+    Route::get('/qr/salida', [QrController::class, 'salida']);
+
 });

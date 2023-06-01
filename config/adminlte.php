@@ -336,6 +336,22 @@ return [
                 
             ],
         ],
+        ['header' => 'QR ENTRADA/SALIDA'],
+        [
+            'text'    => 'QR Entrada/Salida',
+            'icon'    => 'fas fa-walking',
+            'submenu' => [
+                [
+                    'text' => 'QR entrada',
+                    'url'  => '/admin/qr/entrada',
+                ],
+
+                [
+                    'text' => 'QR Salida',
+                    'url'  => '/admin/qr/salida',
+                ],
+            ],
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -348,7 +364,7 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
 
-       
+
     ],
 
     /*
