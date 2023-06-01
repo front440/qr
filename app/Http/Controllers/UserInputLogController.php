@@ -136,14 +136,14 @@ class UserInputLogController extends Controller
     {
         // dd("EE");
         $input = UserLog::find($request->id);
-        dd($request);
-        $input->date = $request->date;
-        $input->type = $request->type;
-        $input->id_user = $request->user;
+        // dd($request);
+        $input->date = $request->fecha;
+        $input->type = $request->tipo;
+        $input->id_user = $request->usuario;
         $input->save();
         if ($input) {
             return response()->json([
-                'message' => "Data Found",
+                'message' => "Data Saved",
                 "code"    => 200,
                 "data"    => $input
             ]);
