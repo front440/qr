@@ -343,12 +343,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'QR entrada',
-                    'url'  => '/admin/qr/entrada',
+                    'url'  => '/user/qr/entrada',
                 ],
 
                 [
                     'text' => 'QR Salida',
-                    'url'  => '/admin/qr/salida',
+                    'url'  => '/user/qr/salida',
                 ],
             ],
         ],
