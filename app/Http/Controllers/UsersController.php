@@ -17,7 +17,7 @@ class UsersController extends Controller
     public function index()
     {
         $user = User::find(\Auth::user()->id);
-        
+
         return view('user.home', ["user" => $user,]);
     }
 
@@ -81,25 +81,31 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-{
-    $user = User::find($id);
-    if (!$user) {
-        return response()->json([
-            'error' => 'Unable to locate the user'
-        ], 404);
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json([
+                'error' => 'Unable to locate the user'
+            ], 404);
+        }
+
+        $validatedData = $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->withErrors(['current_password' => 'La contraseña actual es incorrecta.']);
+        }
+
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->back(); // Redirecciona a la página actual
     }
 
-    $user->update([
-        'email' => $request->email,
-        'phone' => $request->phone,
-        'password' => Hash::make($request['password']),
-    ]);
 
-    return redirect()->back(); // Redirecciona a la página actual
-
-    // Si prefieres redireccionar a una ruta específica, puedes usar:
-    // return redirect()->route('nombre_de_la_ruta');
-    }
 
 
     /**
@@ -156,7 +162,7 @@ class UsersController extends Controller
                 'end' => $event->end_date,
             ];
         }
-        
+
         return view('user.dash.index', ["user" => $user, 'events' => $events]);
     }
 
@@ -175,8 +181,8 @@ class UsersController extends Controller
         $value = $request->session()->get('key');
         //dd($user);
 
-        
-        return view("user.profile",["user" => $user,]);
+
+        return view("user.profile", ["user" => $user,]);
     }
 
     public function pass(Request $request)
@@ -185,7 +191,7 @@ class UsersController extends Controller
         $value = $request->session()->get('key');
         //dd($user);
 
-        
-        return view("user.changePass",["user" => $user,]);
+
+        return view("user.changePass", ["user" => $user,]);
     }
 }
