@@ -12177,6 +12177,8 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
   .layout-lg-navbar-fixed .dark-mode .wrapper .sidebar-dark-light .brand-link:not([class*="navbar"]) {
     background-color: #343a40;
   }
+ 
+
   .layout-lg-navbar-fixed .dark-mode .wrapper .sidebar-light-light .brand-link:not([class*="navbar"]) {
     background-color: #fff;
   }
@@ -12498,6 +12500,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 .brand-link .pushmenu {
   margin-right: 0.5rem;
   font-size: 1rem;
+
 }
 
 .brand-link .brand-link {
@@ -13855,7 +13858,6 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 .sidebar-hidden.sidebar-mini.sidebar-collapse .main-header {
   margin-left: 0 !important;
 }
-
 .dark-mode .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
 .dark-mode .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
   background-color: #3f6791;

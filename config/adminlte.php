@@ -64,10 +64,10 @@ return [
     */
 
     'logo' => '',
-    'logo_img' => 'img\logos TFG\logo3b_oscuro.png',
-    'logo_img_class' => 'brand-image w-100',
+    'logo_img' => 'img\logos TFG\logo3b_claro.png',
+    'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs h-25 w-50',
+    'logo_img_xl_class' => 'brand-image-xs h-25 w-25',
     'logo_img_alt' => 'Admin Logo',
 
     /*
@@ -84,13 +84,13 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
-            'path' => 'public\img\logos TFG\logo1b_sinfondo.png',
+            'path' => 'img\logos TFG\logo1b_sinfondo.png',
             'alt' => 'Auth Logo',
             'class' => '',
-            'width' => 50,
-            'height' => 50,
+            'width' => 200,
+            'height' => 100,
         ],
     ],
 
@@ -109,11 +109,11 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'public\img\logos TFG\logo1b_sinfondo.png',
+            'path' => 'img\logos TFG\logo2b.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
-            'width' => 60,
-            'height' => 60,
+            'width' => 400,
+            'height' => 300,
         ],
     ],
 
@@ -192,7 +192,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-4 ',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -211,9 +211,9 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
-    'sidebar_collapse_remember' => false,
+    'sidebar_collapse_remember' => true,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',

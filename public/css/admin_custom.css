@@ -1,0 +1,36 @@
+.sidebar {
+    height: calc(100% - (3.5rem + 1px));
+    overflow-x: hidden;
+    overflow-y: initial;
+    padding-bottom: 0;
+    padding-left: 0.5rem;
+    padding-right: 10rem;
+    padding-top: 0;
+    scrollbar-color: #a9a9a9 transparent;
+    scrollbar-width: none;
+}
+
+
+.brand-image
+{
+
+    height: auto;
+    width: auto;
+}
+
+.main-sidebar
+{
+
+    background-color: #414141;
+}
+
+.p{
+
+    color: #eaeaea;
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active{
+
+
+    background-color: #0fbbba ;
+}
