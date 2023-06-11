@@ -331,11 +331,11 @@
                 // });
 
                 Swal.fire({
-                    title: 'Do you want to save the changes?',
+                    title: '¿Quieres borrar los cambios?',
                     showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: 'Save',
-                    denyButtonText: `Don't save`,
+                    showCancelButton: false,
+                    confirmButtonText: 'Borrar',
+                    denyButtonText: `No borrar`,
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
@@ -357,7 +357,7 @@
                             }
                         });
                     } else if (result.isDenied) {
-                        Swal.fire('Changes are not saved', '', 'info');
+                        Swal.fire('Los cambios no han sido guardados', '', 'info');
                     }
                 })
             })
