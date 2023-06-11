@@ -6,6 +6,7 @@ use App\Http\Controllers\UserOutLogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\QrController;
+use App\Http\Controllers\EscanerController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -41,9 +42,9 @@ require __DIR__ . '/auth.php';
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/entrada', [App\Http\Controllers\UserController::class, 'index']);
 Route::get('/salida', [App\Http\Controllers\UserController::class, 'index']);
+
 
 //Routes admin
 Route::group([
@@ -58,7 +59,6 @@ Route::group([
     Route::get('/qr/entrada', [QrController::class, 'entrada']);
     Route::get('/qr/salida', [QrController::class, 'salida']);
 
-    
     Route::get('/alumnos/datos', [UserController::class, 'index']);
     Route::get('/datatables/users', [UserController::class, 'get'])->name('user.get');
 
@@ -67,8 +67,9 @@ Route::group([
     Route::get('/datatables/user-inputs', [UserInputLogController::class, 'get'])->name('entrada.get');
     Route::post('/datatables/user-inputs-edit', [UserInputLogController::class, 'edit'])->name('entrada.edit'); // Edit input
     Route::post('/datatables/user-inputs-update', [UserInputLogController::class, 'update'])->name('entrada.update'); // Update input
-    Route::post('/datatables/user-inputs-delete', [UserInputLogController::class, 'destroy'])->name('entrada.delete'); // Delete input
     Route::get('/datatables/user-outs', [UserOutLogController::class, 'get'])->name('salida.get');
+
+    Route::get('/escaner', [EscanerController::class, 'mostrarVista']);
     
 });
 
@@ -85,5 +86,4 @@ Route::group([
 
     Route::get('/qr/entrada', [QrController::class, 'entrada']);
     Route::get('/qr/salida', [QrController::class, 'salida']);
-
 });

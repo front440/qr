@@ -25,6 +25,7 @@
         "tailwindcss": "^3.0.18"
     },
     "dependencies": {
-        "bootstrap-icons": "^1.10.4"
+        "bootstrap-icons": "^1.10.4",
+        "html5-qrcode": "^2.3.8"
     }
 }

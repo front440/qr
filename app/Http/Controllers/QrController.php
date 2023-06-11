@@ -13,7 +13,7 @@ class QrController extends Controller
         $fecha=date ("d-m-Yh:i:s");
         $idAlumno=\Auth::user()->id;
         
-        $datos= "id={$idAlumno}&date={$fecha}&type={$tipo}";
+        $datos= "id={$idAlumno}|date={$fecha}|type={$tipo}";
         //dd($datos);
 
         //$codigoQR = QrCode::size(250)->generate($datos);    
@@ -27,7 +27,7 @@ class QrController extends Controller
         $fecha = date ("d-m-Yh:i:s");
         $idAlumno=\Auth::user()->id;
         
-        $datos= "id={$idAlumno}&date={$fecha}&type={$tipo}";
+        $datos= "id={$idAlumno}|date={$fecha}|type={$tipo}";
         //dd($datos);
 
         //$codigoQR = QrCode::size(250)->generate($datos);

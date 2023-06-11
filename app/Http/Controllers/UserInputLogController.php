@@ -16,7 +16,7 @@ class UserInputLogController extends Controller
     public function index()
     {
         //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
-        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 1 ORDER BY ul.date DESC");
+        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 1 ORDER BY ul.date ASC");
         // dd($query);
 
         // return datatables()->of($query)->toJson();
@@ -129,6 +129,7 @@ class UserInputLogController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -155,26 +156,14 @@ class UserInputLogController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $input = UserLog::find($request->id)->delete();
-        if ($input) {
-            return response()->json([
-                'message' => "Input Deleted!",
-                "code"    => 200,
-                "data"    => $input
-            ]);
-        } else {
-            return response()->json([
-                'message' => "Internal Server Error",
-                "code"    => 500
-            ]);
-        }
+        //
     }
 
     /**

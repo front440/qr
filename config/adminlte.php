@@ -336,6 +336,17 @@ return [
                 
             ],
         ],
+        ['header' => 'ESCANER'],
+        [
+            'text'    => 'Escaner',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Abrir Escaner',
+                    'url'  => '/admin/escaner',
+                ],       
+            ],
+        ],
         ['header' => 'QR ENTRADA/SALIDA'],
         [
             'text'    => 'QR Entrada/Salida',
@@ -475,8 +486,8 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => true,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@10',
+                    'asset' => false,
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
                 ],
             ],
         ],
