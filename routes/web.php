@@ -67,6 +67,7 @@ Route::group([
     Route::get('/datatables/user-inputs', [UserInputLogController::class, 'get'])->name('entrada.get');
     Route::post('/datatables/user-inputs-edit', [UserInputLogController::class, 'edit'])->name('entrada.edit'); // Edit input
     Route::post('/datatables/user-inputs-update', [UserInputLogController::class, 'update'])->name('entrada.update'); // Update input
+    Route::post('/datatables/user-inputs-delete', [UserInputLogController::class, 'destroy'])->name('entrada.delete'); // Delete input
     Route::get('/datatables/user-outs', [UserOutLogController::class, 'get'])->name('salida.get');
     
 });
