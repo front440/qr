@@ -10,6 +10,17 @@
     scrollbar-width: none;
 }
 
+.btn {
+
+    background-color: #0fbbba ;
+}
+
+.delete
+{
+    background-color:red ;
+    margin-right: 4px;
+    border-color: #414141;
+}
 
 .brand-image
 {
@@ -34,3 +45,4 @@
 
     background-color: #0fbbba ;
 }
+
