@@ -7909,7 +7909,7 @@ var Html5QrcodeScanner = function() {
             b.style.textAlign = "left", b.style.margin = "0px", b.style.padding = "5px", b.style.fontSize = "20px", b.style.borderBottom = "1px solid rgba(192, 192, 192, 0.18)", a.appendChild(b);
             var c = document.createElement("span"),
                 d = document.createElement("a");
-            d.innerHTML = "Escaner SCQR", d.href = "https://github.com/mebjas/html5-qrcode", c.appendChild(d), b.appendChild(c);
+            d.innerHTML = "Escaner SCQR", d.href = "http://localhost:8000/admin/home", c.appendChild(d), b.appendChild(c);
             var e = document.createElement("span");
             e.id = this.__getStatusSpanId(), e.style.float = "right", e.style.padding = "5px 7px", e.style.fontSize = "14px", e.style.background = "#dedede6b", e.style.border = "1px solid #00000000", e.style.color = "rgb(17, 17, 17)", b.appendChild(e), this.__setStatus("IDLE");
             var f = document.createElement("div");
