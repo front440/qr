@@ -365,12 +365,12 @@ return [
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
+            'text' => 'Perfil',
             'url'  => 'user/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Cambiar Contraseña',
             'url'  => 'user/change_password',
             'icon' => 'fas fa-fw fa-lock',
         ],
