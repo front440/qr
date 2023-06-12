@@ -7876,7 +7876,7 @@ var Html5QrcodeScanner = function() {
                     if (d.lastMatchFound == c) return;
                     d.lastMatchFound = c, d.__setHeaderMessage("Last Match: ".concat(c), a.STATUS_SUCCESS)
                 }
-            }, this.qrCodeErrorCallback = function(a) { d.__setStatus("Scanning"), c && c(a) };
+            }, this.qrCodeErrorCallback = function(a) { d.__setStatus("Escaneando"), c && c(a) };
             var e = document.getElementById(this.elementId);
             e.innerHTML = "", this.__createBasicLayout(e), this.html5Qrcode = new Html5Qrcode(this.__getScanRegionId(), this.verbose)
         }
@@ -7939,7 +7939,7 @@ var Html5QrcodeScanner = function() {
             var i = document.createElement("input");
             i.id = this.__getFileScanInputId(), i.accept = "image/*", i.type = "file", i.style.width = "200px", i.disabled = this.currentScanType == a.SCAN_TYPE_CAMERA;
             var j = document.createElement("span");
-            j.innerHTML = "&nbsp; Select Image", h.appendChild(i), h.appendChild(j), i.addEventListener("change", function(c) {
+            j.innerHTML = "&nbsp; Seleccione imagen", h.appendChild(i), h.appendChild(j), i.addEventListener("change", function(c) {
                 if (b.currentScanType === a.SCAN_TYPE_FILE && 0 != c.target.files.length) {
                     var d = c.target.files[0];
                     b.html5Qrcode.scanFile(d, !0).then(function(a) { b.__resetHeaderMessage(), b.qrCodeSuccessCallback(a) })["catch"](function(c) { b.__setStatus("ERROR", a.STATUS_WARNING), b.__setHeaderMessage(c, a.STATUS_WARNING), b.qrCodeErrorCallback(c) })
@@ -7980,7 +7980,7 @@ var Html5QrcodeScanner = function() {
         value: function() {
             var b = this,
                 c = "Escanear fichero QR",
-                d = "Scan using camera directly",
+                d = "Escanear con cámara",
                 e = document.getElementById(this.__getDashboardSectionId()),
                 f = document.createElement("div");
             f.style.textAlign = "center";

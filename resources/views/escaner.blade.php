@@ -6,16 +6,27 @@
     <!-- Agrega aquí tus enlaces a archivos CSS o librerías externas si es necesario -->
     <script src="{{ asset('assets/ht.js') }}"></script>
     <style>
-        .result {
-            background-color: green;
-            color: #fff;
-            padding: 20px;
+        #reader {
+            height: 350px;
+            align-items: center;
+            justify-content: center;/* Ajusta la altura según tus necesidades */
+            margin-left: 35%
         }
-
-        .row {
-            display: flex;
+    
+        form {
+            margin-top: 20px; /* Agrega un margen superior para separar del elemento anterior */
+        }
+    
+        .input {
+            width: 100%; /* Haz que el campo de entrada ocupe todo el ancho disponible */
+            padding: 10px; /* Agrega un relleno interno para mayor legibilidad */
+        }
+    
+        #txtHint {
+            font-weight: bold; /* Agrega negrita al texto */
         }
     </style>
+    
 </head>
 
 <body>
