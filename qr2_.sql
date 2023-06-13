@@ -451,7 +451,6 @@ INSERT INTO `users` (`id`, `cif`, `email`, `password`, `phone`, `name`, `surname
 (8, '123465789', 'javi@mail.com', '123456789', 624624624, 'javi', 'javi', 'javi', 'admin', 'inactivo', NULL, NULL, NULL, NULL, NULL),
 (10, '14785236', 'paco@mail.com', '$2y$10$Q2.sv7XyYetNCGQ8m.SEE.TeD75DIQgdzWdJruWJWEhFJc/A/gGKG', 555555555, 'paco', 'paco', 'paco', 'user', 'inactive', NULL, NULL, NULL, '2023-06-04', '2023-03-17'),
 (11, '532423534', 'carlos@mail.com', '$2y$10$Q2.sv7XyYetNCGQ8m.SEE.TeD75DIQgdzWdJruWJWEhFJc/A/gGKG', 628191877, 'paco', 'paco', 'paco', 'admin', 'inactive', NULL, NULL, NULL, '2023-03-17', '2023-03-17'),
-(12, '6325214B', 'juan@mail.com', '$2y$10$uBHOSTBEuUgl8axXtX43ruXJqjgyuPhyHLUNeHuTpy6L1/vLXGRR.', 234212345, 'Juan', 'Golondrina', 'Cum', 'user', 'inactivo', NULL, NULL, NULL, '2023-06-04', '2023-05-28'),
 (14, '36215458G', 'manolo@mail.com', '$2y$10$DJRncfkKkffsTX/iTEX0luUsZ88ThEkXb9uI/VuG4NvTWUpcXDDpO', 654125487, 'Manolo', 'Manolo', 'Manolo', 'user', 'inactivo', NULL, NULL, NULL, '2023-06-12', '2023-06-12'),
 (15, '36541456L', 'marta@mail.com', '$2y$10$qGfuU1wJpsyIxYKeSOSvq.yniDSohEyGH5bEHdRSHUQIWtpB/TsPm', 654874521, 'Marta', 'Marta', 'Marta', 'user', 'inactivo', NULL, NULL, NULL, '2023-06-13', '2023-06-13'),
 (16, '32125479L', 'dani@mail.com', '$2y$10$T84l1UXNnRDuKYl1ZJFjCOpiDO8Uuqyu4DmL0Wqi6U543h5S5xtMK', 632541452, 'dani', 'dani', 'dani', 'user', 'inactivo', NULL, NULL, NULL, '2023-06-13', '2023-06-13');
