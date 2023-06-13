@@ -117,7 +117,8 @@
 
                             <div class="col-md-6">
                                 <input id="cif" type="text" class="form-control @error('cif') is-invalid @enderror"
-                                    name="cif" value="{{ old('cif') }}" required autocomplete="cif" autofocus disabled>
+                                    name="cif" value="{{ old('cif') }}" required autocomplete="cif" autofocus
+                                    disabled>
 
                                 @error('cif')
                                     <span class="invalid-feedback" role="alert">
@@ -143,11 +144,90 @@
 
             </div>
 
-        </div>
     </div>
-</div>
-</form>
+    </div>
+    </div>
+    </form>
     <!-- Modal Editar -->
+
+    <!-- Modal PAss -->
+    <div class="modal fade" id="modalPass" tabindex="-1" role="dialog" aria-labelledby="modalLabelEdit"
+        aria-hidden="true">
+        <form action="" id="formPass">
+            {{ csrf_field() }}
+            <div class="modal-dialog" role="document">
+                <input type="hidden" name="id" id="idUser">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabelEdit">Cambiar contraseña</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end"
+                                style="color: #000000;">{{ __('Nombre') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="namePass" type="text"
+                                    class="form-control @error('name') is-invalid @enderror" name="name"
+                                    value="{{ old('name') }}" required autocomplete="name" autofocus disabled>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end"
+                                style="color: #000000;">{{ __('Contraseña') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    value="{{ old('password') }}" required autocomplete="password" autofocus>
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end"
+                                style="color: #000000;">{{ __('Repite Contraseña') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    value="{{ old('password') }}" required autocomplete="password" autofocus>
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                id="closePass">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="submitPass">Guardar Cambios</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Modal PAss -->
+
     <div class="card">
         <div class="card-header">Alumnos</div>
         <div class="card-body">
@@ -165,13 +245,14 @@
                     </tr>
                 </thead>
                 <tbody>
-
                 </tbody>
             </table>
 
         </div>
 
     </div>
+
+
 @stop
 
 @section('css')
@@ -230,7 +311,9 @@
                                 row.id +
                                 '"><i class="fa fa-trash"></i></button>' +
                                 '<button class="btn btn-info edit" data-id="' + row.id +
-                                '" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-edit"></i></button>';
+                                '" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-edit"></i></button><button class="btn btn-info edit" data-id="' +
+                                row.id +
+                                '" data-toggle="modal" data-target="#modalPass"><i class="fa fa-user"></i></button>';
                         }
                     },
 
@@ -259,6 +342,7 @@
                         $("idUser").value = $(this).data('id');
 
                         $('#name').val(usuarioRespuesta.name);
+                        $('#namePass').val(usuarioRespuesta.name);
                         $('#surname1').val(usuarioRespuesta.surname1);
                         $('#surname2').val(usuarioRespuesta.surname2);
                         $('#email').val(usuarioRespuesta.email);
@@ -289,40 +373,28 @@
                 });
             });
             // End Save Edit Input
+
+            // Save new pass
+            $('#submitPass').click(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: "{{ route('user.changepass') }}",
+                    type: "post",
+                    dataType: "json",
+                    data: $("#formPass").serialize(),
+                    success: function(response) {
+                        $("#formPass")[0].reset();
+                        console.log(response);
+                        $("#closePass").click();
+                        table.DataTable().ajax.reload();
+                    }
+                });
+            });
+            // End new pass
+
             // Delete Log
             $(document).on('click', '#delete', function() {
-                // Swal.fire({
-
-                //     title: '¿Quieres borrar el registro?',
-                //     showDenyButton: true,
-                //     showCancelButton: true,
-                //     confirmButtonText: 'Borrar',
-                //     denyButtonText: `No borrar`,
-                // }).then((result) => {
-                //     /* Read more about isConfirmed, isDenied below */
-                //     if (result.isConfirmed) {
-                //         console.log($(this).data('id'));
-                //         Swal.fire('Borrado', '', 'success');
-
-                //         $.ajax({
-                //             url: "{{ route('entrada.update') }}",
-                //             type: "post",
-                //             dataType: "json",
-                //             data: {
-                //                 "_token": "{{ csrf_token() }}",
-                //                 "id": $(this).data('id')
-                //             },
-                //             success: function(response) {
-                //                 $("#formEdit")[0].reset();
-                //                 console.log(response);
-                //                 $("#closeEdit").click();
-                //                 table.DataTable().ajax.reload();
-                //             }
-                //         });
-                //     } else if (result.isDenied) {
-                //         Swal.fire('El registro no ha sido borrado', '', 'info');
-                //     }
-                // });
 
                 Swal.fire({
                     title: '¿Quieres borrar los cambios?',

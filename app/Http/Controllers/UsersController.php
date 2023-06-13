@@ -187,9 +187,19 @@ class UsersController extends Controller
 
     public function pass(Request $request)
     {
+        
         $user = User::find(\Auth::user()->id);
-        $value = $request->session()->get('key');
-        //dd($user);
+
+        return view("user.changePass", ["user" => $user,]);
+    }
+
+    public function changePassAdmin(Request $request)
+    {
+        $user = User::find($request->id);
+        dd($user->data);
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
 
 
         return view("user.changePass", ["user" => $user,]);

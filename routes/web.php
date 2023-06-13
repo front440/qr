@@ -58,6 +58,8 @@ Route::group([
 
     Route::get('/alumnos/datos', [UserController::class, 'index']);
     Route::get('/datatables/users', [UserController::class, 'get'])->name('user.get');
+    Route::post('/change_password', [UsersController::class, 'changePassAdmin'])->name('user.changepass');
+
 
     Route::post('/alumnos/entradas/add', [UserInputLogController::class, 'store'])->name('entrada.store');
     
