@@ -86,10 +86,7 @@ class RegisterController extends Controller
             'cif' => $this->normalize($data['cif']),
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
-//            'address' => $this->normalize($data['address']),
-//            'city' => $this->normalize($data['city']),
-//            'zip' => $data['zip'],
-//            'province' => $data['province'],
+
             'role' => "user",
         ]);
     }
