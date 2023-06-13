@@ -15,36 +15,11 @@ class UserOutLogController extends Controller
      */
     public function index()
     {
-        //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
-        // $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 1 ORDER BY ul.date ASC");
-        // dd($query);
-
-        // return datatables()->of($query)->toJson();
-
         $usuarios = User::all();
-        // $registrosEntrada = UserLog::where('type', '=', '1');
-        // $registrosEntrada = UserLog::all();
 
-        // $registrosEntrada = \DB::table('users_logs')
-        //     ->where('type', '=', '1')
-        //     ->get();
-        // dd($registrosEntrada);
-
-        // if ($query) {
-        //     return response()->json([
-        //         'message'   => "Data Found",
-        //         "code"      => 200,
-        //         // "data"  => $query
-        //     ]);
-        // } else {
-        //     return response()->json([
-        //         'message' => "Internal Server Error",
-        //         "code"    => 500
-        //     ]);
-        // }
 
         // return view('admin.log.inputlog', ["registrosEntrada" => $registrosEntrada, "usuarios" => $usuarios]);
-        return view('admin.log.inputlog', [ "usuarios" => $usuarios]);
+        return view('admin.log.outlog', [ "usuarios" => $usuarios]);
     }
 
     /**

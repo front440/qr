@@ -42,8 +42,8 @@ require __DIR__ . '/auth.php';
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/entrada', [App\Http\Controllers\UserController::class, 'index']);
-Route::get('/salida', [App\Http\Controllers\UserController::class, 'index']);
+Route::get('/entrada', [App\Http\Controllers\UserInputLogController::class, 'index']);
+Route::get('/salida', [App\Http\Controllers\UserOutLogController::class, 'index']);
 
 
 //Routes admin

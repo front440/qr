@@ -192,7 +192,7 @@
                         "last": "Último"
                     }
                 },
-                "ajax": "{{ route('entrada.get') }}",
+                "ajax": "{{ route('salida.get') }}",
                 "columns": [{
                         data: "id"
                     },

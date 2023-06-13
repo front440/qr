@@ -15,23 +15,10 @@ class UserInputLogController extends Controller
      */
     public function index()
     {
-        //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
-        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 1 ORDER BY ul.date DESC");
-        // dd($query);
-
-        // return datatables()->of($query)->toJson();
-
         $usuarios = User::all();
-        // $registrosEntrada = UserLog::where('type', '=', '1');
-        // $registrosEntrada = UserLog::all();
-        $registrosEntrada = \DB::table('users_logs')
-            ->where('type', '=', '1')
-            ->get();
 
-
-        return view('admin.log.inputlog', ["registrosEntrada" => $registrosEntrada, "usuarios" => $usuarios]);
+        return view('admin.log.inputlog', [ "usuarios" => $usuarios]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -42,12 +29,6 @@ class UserInputLogController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $inputLog = new UserLog();
@@ -70,30 +51,13 @@ class UserInputLogController extends Controller
             ]);
         }
 
-        // return UserLog::create([
-        //     'date' => $request->fecha,
-        //     'type' => $request->tipo,
-        //     'id_user' => $request->usuario,
-        // ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request)
     {
         $result = UserLog::find($request->id);
@@ -172,7 +136,7 @@ class UserInputLogController extends Controller
     public function get()
     {
         //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
-        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC");
+        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 1 ORDER BY ul.date ASC");
         // dd($query);
 
         return datatables()->of($query)->toJson();
