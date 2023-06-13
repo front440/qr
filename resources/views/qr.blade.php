@@ -43,9 +43,33 @@
 <div class="content">
     <div class="qr-container">
         <h2 class="qr-title">STUDENT QR</h2>
-        <div class="qr-image">
+        <div class="qr-image" id="recarga">
             {!! QrCode::size(400)->generate($datos) !!}
         </div>
     </div>
 </div>
+
+
+@stop
+
+
+@section('js')
+<script>
+        // Función para actualizar el código QR cada 3000 milisegundos
+        function actualizarCodigoQR() {
+            $.ajax({
+                url: '{{ route("entrada.qr") }}',
+                method: 'GET',
+                success: function(response) {
+                    $('#recarga').html(response);
+                }
+            });
+        }
+
+        // Actualizar inicialmente el código QR
+        //actualizarCodigoQR();
+
+        // Actualizar el código QR cada 3000 milisegundos
+        setInterval(recarga, 5000);
+    </script>
 @stop
