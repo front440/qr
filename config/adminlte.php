@@ -112,7 +112,7 @@ return [
             'path' => 'img\logos TFG\logo2b.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
-            'width' => 400,
+            'width' => 300,
             'height' => 300,
         ],
     ],
