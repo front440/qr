@@ -15,6 +15,13 @@
     background-color: #0fbbba ;
 }
 
+.qr {
+
+    position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 .delete
 {
     background-color:red ;
