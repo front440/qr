@@ -56,9 +56,6 @@ Route::group([
     Route::get('/alumnos/entradas', [UserInputLogController::class, 'index']);
     Route::get('/alumnos/salidas', [UserOutLogController::class, 'index']);
 
-    Route::get('/qr/entrada', [QrController::class, 'entrada']);
-    Route::get('/qr/salida', [QrController::class, 'salida']);
-
     Route::get('/alumnos/datos', [UserController::class, 'index']);
     Route::get('/datatables/users', [UserController::class, 'get'])->name('user.get');
 
