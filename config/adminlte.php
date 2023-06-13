@@ -363,19 +363,22 @@ return [
                 ],
             ],
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Opciones'],
         [
+        'text'    => 'Opciones',
+        'submenu' => [
+            [
             'text' => 'Perfil',
             'url'  => 'user/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
+
+            ],
+            [
             'text' => 'Cambiar Contraseña',
             'url'  => 'user/change_password',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+            ],
 
-
+        ]
+    ],
     ],
 
     /*
