@@ -92,21 +92,85 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row">
-                        <label for="surname1" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('Apellido 1') }}</label>
+
+                        <div class="row mb-3">
+                            <label for="surname1" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('Apellido 1') }}</label>
+
                             <div class="col-md-6">
-                                <input id="surname1" type="text" class="form-control @error('surname1') is-invalid @enderror" name="surname1" value="{{ old('surname1') }}" required autocomplete="name" autofocus>
+                                <input id="surname1" type="text" class="form-control @error('surname1') is-invalid @enderror" name="surname1" value="{{ old('surname1') }}" required autocomplete="surname1" autofocus>
+
                                 @error('surname1')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            </div>
-                         
                         </div>
 
-                      
+                        <div class="row mb-3">
+                            <label for="surname2" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('Apellido 2') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="surname2" type="text" class="form-control @error('surname2') is-invalid @enderror" name="surname2" value="{{ old('surname2') }}" required autocomplete="surname2" autofocus>
+
+                                @error('surname2')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('Correo') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="phone" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('Teléfono') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="cif" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('DNI') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="cif" type="text" class="form-control @error('cif') is-invalid @enderror" name="cif" value="{{ old('cif') }}" required autocomplete="cif" autofocus>
+
+                                @error('cif')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            id="closeEdit">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="submitEditar">Guardar Cambios</button>
+                    </div>
+                        </div>
+
+                       
                          
                         </div>
 
@@ -273,7 +337,24 @@
                 });
             });
             // End Edit
+  // Save Edit Input
+  $('#submitEditar').click(function(e) {
+                e.preventDefault();
 
+                $.ajax({
+                    url: "{{ route('entrada.update') }}",
+                    type: "post",
+                    dataType: "json",
+                    data: $("#formEdit").serialize(),
+                    success: function(response) {
+                        $("#formEdit")[0].reset();
+                        console.log(response);
+                        $("#closeEdit").click();
+                        table.DataTable().ajax.reload();
+                    }
+                });
+            });
+            // End Save Edit Input
 
     });
 </script>
