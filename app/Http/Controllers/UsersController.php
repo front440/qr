@@ -196,7 +196,7 @@ class UsersController extends Controller
     public function changePassAdmin(Request $request)
     {
         $user = User::find($request->id);
-        dd($user->data);
+        dd($request->id);
         $user->update([
             'password' => Hash::make($request->password),
         ]);

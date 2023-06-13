@@ -156,7 +156,7 @@
         <form action="" id="formPass">
             {{ csrf_field() }}
             <div class="modal-dialog" role="document">
-                <input type="hidden" name="id" id="idUser">
+                <input type="hidden" name="id" id="idUserPass">
 
                 <div class="modal-content">
                     <div class="modal-header">
@@ -340,6 +340,7 @@
                         usuarioRespuesta = response.data;
                         // $("#close").click();
                         $("idUser").value = $(this).data('id');
+                        $("idUserPass").value = $(this).data('id');
 
                         $('#name').val(usuarioRespuesta.name);
                         $('#namePass').val(usuarioRespuesta.name);
