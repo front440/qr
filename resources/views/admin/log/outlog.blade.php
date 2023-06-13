@@ -102,6 +102,10 @@
                                 <input type="datetime-local" class="form-control" placeholder="Color texto" id="fechaEditar"
                                     name="fecha" value="">
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Cerrar</button>
+                                <button type="button" class="btn btn-primary" id="submitEditar">Guardar Cambios</button>
+                            </div>
                         </div>
 
 
@@ -162,7 +166,7 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url: "{{ route('entrada.store') }}",
+                    url: "{{ route('salida.store') }}",
                     type: "post",
                     dataType: "json",
                     data: $("#MyForm").serialize(),
@@ -233,7 +237,7 @@
                 idInputLog = $(this).data('id');
                 document.getElementById("idInputLog").value = idInputLog;
                 $.ajax({
-                    url: "{{ route('entrada.edit') }}",
+                    url: "{{ route('salida.edit') }}",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -277,7 +281,7 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url: "{{ route('entrada.update') }}",
+                    url: "{{ route('salida.update') }}",
                     type: "post",
                     dataType: "json",
                     data: $("#formEdit").serialize(),
@@ -308,7 +312,7 @@
                         console.log($(this).data('id'));
 
                         $.ajax({
-                            url: "{{ route('entrada.delete') }}",
+                            url: "{{ route('salida.delete') }}",
                             type: "post",
                             dataType: "json",
                             data: {

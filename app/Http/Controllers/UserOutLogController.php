@@ -40,7 +40,26 @@ class UserOutLogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputLog = new UserLog();
+
+        $inputLog->date = $request->fecha;
+        $inputLog->type = $request->tipo;
+        $inputLog->id_user = $request->usuario;
+
+        $result = $inputLog->save();
+
+        if ($result) {
+            return response()->json([
+                'message' => "Data Inserted Successfully",
+                "code"    => 200
+            ]);
+        } else {
+            return response()->json([
+                'message' => "Internal Server Error",
+                "code"    => 500
+            ]);
+        }
+
     }
 
     /**
@@ -60,9 +79,22 @@ class UserOutLogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $result = UserLog::find($request->id);
+
+        if ($result) {
+            return response()->json([
+                'message' => "Data Found",
+                "code"    => 200,
+                "data"    => $result
+            ]);
+        } else {
+            return response()->json([
+                'message' => "Internal Server Error",
+                "code"    => 500
+            ]);
+        }
     }
 
     /**
@@ -72,9 +104,27 @@ class UserOutLogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // dd("EE");
+        $input = UserLog::find($request->id);
+        // dd($request);
+        $input->date = $request->fecha;
+        $input->type = $request->tipo;
+        $input->id_user = $request->usuario;
+        $input->save();
+        if ($input) {
+            return response()->json([
+                'message' => "Data Saved",
+                "code"    => 200,
+                "data"    => $input
+            ]);
+        } else {
+            return response()->json([
+                'message' => "Internal Server Error",
+                "code"    => 500
+            ]);
+        }
     }
 
     /**
@@ -83,9 +133,21 @@ class UserOutLogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $input = UserLog::find($request->id)->delete();
+        if ($input) {
+            return response()->json([
+                'message' => "Input Deleted!",
+                "code"    => 200,
+                "data"    => $input
+            ]);
+        } else {
+            return response()->json([
+                'message' => "Internal Server Error",
+                "code"    => 500
+            ]);
+        }
     }
 
     /**

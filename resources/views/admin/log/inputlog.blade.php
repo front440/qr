@@ -66,51 +66,56 @@
 
     <!-- Modal Editar -->
     <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalLabelEdit"
-        aria-hidden="true">
-        <form action="" id="formEdit">
-            {{ csrf_field() }}
-            <div class="modal-dialog" role="document">
-                <input type="hidden" name="id" id="idInputLog">
+    aria-hidden="true">
+    <form action="" id="formEdit">
+        {{ csrf_field() }}
+        <div class="modal-dialog" role="document">
+            <input type="hidden" name="id" id="idInputLog">
 
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabelEdit">Editar entrada</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="usuario">Usuario</label>
-                                <select class="form-control" id="usuarioEditar" name="usuario">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabelEdit">Editar entrada</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="usuario">Usuario</label>
+                            <select class="form-control" id="usuarioEditar" name="usuario">
 
-                                </select>
-                            </div>
+                            </select>
                         </div>
-
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label for="tipo">tipo</label>
-                                <select class="form-control" name="tipo" id="tipoEditar">
-                                    <option value="0" selected>Salida</option>
-                                    <option value="1">Entrada</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="fecha">fecha </label>
-                                <input type="datetime-local" class="form-control" placeholder="Color texto" id="fechaEditar"
-                                    name="fecha" value="">
-                            </div>
-                        </div>
-
-
                     </div>
+
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="tipo">tipo</label>
+                            <select class="form-control" name="tipo" id="tipoEditar">
+                                <option value="0" selected>Salida</option>
+                                <option value="1">Entrada</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="fecha">fecha </label>
+                            <input type="datetime-local" class="form-control" placeholder="Color texto" id="fechaEditar"
+                                name="fecha" value="">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="submitEditar">Guardar Cambios</button>
+                        </div>
+                    </div>
+
 
                 </div>
-        </form>
-    </div>
-    </div>
+
+            </div>
+    </form>
+</div>
+</div>
+    
     <!-- Modal Editar -->
 
     <p>Welcome to this beautiful admin panel.</p>
