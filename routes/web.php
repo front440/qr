@@ -92,5 +92,5 @@ Route::group([
     Route::post('/update/{id}', [UsersController::class, 'update'])->name('user.update');
 
     Route::get('/qr/entrada', [QrController::class, 'entrada'])->name('entrada.qr');
-    Route::get('/qr/salida', [QrController::class, 'salida']);
+    Route::get('/qr/salida', [QrController::class, 'salida'])->name('entrada.qr');
 });
