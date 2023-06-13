@@ -68,6 +68,12 @@ Route::group([
     Route::post('/datatables/user-inputs-edit', [UserInputLogController::class, 'edit'])->name('entrada.edit'); // Edit input
     Route::post('/datatables/user-inputs-update', [UserInputLogController::class, 'update'])->name('entrada.update');
     Route::post('/datatables/user-inputs-delete', [UserInputLogController::class, 'destroy'])->name('entrada.delete'); // Delete input // Update input
+
+    Route::get('/usuario/user-inputs', [UserController::class, 'get'])->name('usuario.get');
+    Route::post('/usuario/user-inputs-edit', [UserController::class, 'edit'])->name('usuario.edit'); // Edit input
+    Route::post('/usuario/user-inputs-update', [UserController::class, 'update'])->name('usuario.update');
+    Route::post('/usuario/user-inputs-delete', [UserController::class, 'destroy'])->name('usuario.delete'); // Delete input // Update input
+
     Route::get('/datatables/user-outs', [UserOutLogController::class, 'get'])->name('salida.get');
 
     Route::get('/escaner', [EscanerController::class, 'mostrarVista']);
