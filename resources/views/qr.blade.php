@@ -11,9 +11,11 @@
 @stop
 @section('css')
 
-<link rel="stylesheet" href="/css/admin_custom.css">
+
 @section('content')
     <div class="card-body">
+
+    <link rel="stylesheet" href="/css/admin_custom.css">
         {!! QrCode::size(400)->generate($datos) !!}
     </div>
 @stop

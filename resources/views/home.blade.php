@@ -1,5 +1,7 @@
 @extends('layouts.app')
+@section('css')
 
+<link rel="stylesheet" href="/css/admin_custom.css">
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
