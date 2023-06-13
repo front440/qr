@@ -303,7 +303,73 @@ $('#submitEditar').click(function(e) {
                 });
             });
             // End Save Edit Input
+ // Delete Log
+ $(document).on('click', '#delete', function() {
+                // Swal.fire({
 
+                //     title: '¿Quieres borrar el registro?',
+                //     showDenyButton: true,
+                //     showCancelButton: true,
+                //     confirmButtonText: 'Borrar',
+                //     denyButtonText: `No borrar`,
+                // }).then((result) => {
+                //     /* Read more about isConfirmed, isDenied below */
+                //     if (result.isConfirmed) {
+                //         console.log($(this).data('id'));
+                //         Swal.fire('Borrado', '', 'success');
+
+                //         $.ajax({
+                //             url: "{{ route('entrada.update') }}",
+                //             type: "post",
+                //             dataType: "json",
+                //             data: {
+                //                 "_token": "{{ csrf_token() }}",
+                //                 "id": $(this).data('id')
+                //             },
+                //             success: function(response) {
+                //                 $("#formEdit")[0].reset();
+                //                 console.log(response);
+                //                 $("#closeEdit").click();
+                //                 table.DataTable().ajax.reload();
+                //             }
+                //         });
+                //     } else if (result.isDenied) {
+                //         Swal.fire('El registro no ha sido borrado', '', 'info');
+                //     }
+                // });
+
+                Swal.fire({
+                    title: '¿Quieres borrar los cambios?',
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Borrar',
+                    denyButtonText: `No borrar`,
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire('Borrado!', '', 'success');
+
+                        console.log($(this).data('id'));
+
+                        $.ajax({
+                            url: "{{ route('usuario.delete') }}",
+                            type: "post",
+                            dataType: "json",
+                            data: {
+                                "_token": "{{ csrf_token() }}",
+                                "id": $(this).data('id')
+                            },
+                            success: function(response) {
+
+                                table.DataTable().ajax.reload();
+                            }
+                        });
+                    } else if (result.isDenied) {
+                        Swal.fire('Los cambios no han sido guardados', '', 'info');
+                    }
+                })
+            })
+            // End Delete Log
     });
 </script>
 
