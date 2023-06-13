@@ -22,25 +22,12 @@ class UserInputLogController extends Controller
         // return datatables()->of($query)->toJson();
 
         $usuarios = User::all();
-        $registrosEntrada = UserLog::where('type', '=', '1');
-        $registrosEntrada = UserLog::all();
+        // $registrosEntrada = UserLog::where('type', '=', '1');
+        // $registrosEntrada = UserLog::all();
         $registrosEntrada = \DB::table('users_logs')
             ->where('type', '=', '1')
             ->get();
-        // dd($registrosEntrada);
 
-        // if ($query) {
-        //     return response()->json([
-        //         'message'   => "Data Found",
-        //         "code"      => 200,
-        //         // "data"  => $query
-        //     ]);
-        // } else {
-        //     return response()->json([
-        //         'message' => "Internal Server Error",
-        //         "code"    => 500
-        //     ]);
-        // }
 
         return view('admin.log.inputlog', ["registrosEntrada" => $registrosEntrada, "usuarios" => $usuarios]);
     }

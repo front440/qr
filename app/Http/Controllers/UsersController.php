@@ -187,7 +187,7 @@ class UsersController extends Controller
 
     public function pass(Request $request)
     {
-        
+
         $user = User::find(\Auth::user()->id);
 
         return view("user.changePass", ["user" => $user,]);
@@ -195,13 +195,24 @@ class UsersController extends Controller
 
     public function changePassAdmin(Request $request)
     {
-        $user = User::find($request->id);
-        dd($request->id);
-        $user->update([
-            'password' => Hash::make($request->password),
-        ]);
+        // dd($request->password);
 
+        if ($request->password == $request->password1) {
 
-        return view("user.changePass", ["user" => $user,]);
+            $user = User::find($request->id);
+            $user->update([
+                'password' => Hash::make($request->password),
+            ]);
+            return response()->json([
+                'message' => "Data Inserted Successfully",
+                "code"    => 200
+            ]);
+        } else {
+            return response()->json([
+                'message' => "Internal Server Error",
+                "code"    => 500
+            ]);
+        }
+
     }
 }

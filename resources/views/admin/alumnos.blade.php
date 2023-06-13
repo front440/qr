@@ -200,15 +200,15 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end"
+                            <label for="password1" class="col-md-4 col-form-label text-md-end"
                                 style="color: #000000;">{{ __('Repite Contraseña') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password"
-                                    class="form-control @error('password') is-invalid @enderror" name="password"
-                                    value="{{ old('password') }}" required autocomplete="password" autofocus>
+                                <input id="password1" type="password"
+                                    class="form-control @error('password1') is-invalid @enderror" name="password1"
+                                    value="{{ old('password1') }}" required autocomplete="password1" autofocus>
 
-                                @error('password')
+                                @error('password1')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -340,7 +340,7 @@
                         usuarioRespuesta = response.data;
                         // $("#close").click();
                         $("idUser").value = $(this).data('id');
-                        $("idUserPass").value = $(this).data('id');
+                        document.getElementById('idUserPass').value = usuarioRespuesta.id;
 
                         $('#name').val(usuarioRespuesta.name);
                         $('#namePass').val(usuarioRespuesta.name);
