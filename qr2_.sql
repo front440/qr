@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2023 a las 11:36:15
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 7.4.30
+-- Tiempo de generación: 13-06-2023 a las 17:30:45
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `groups` (
   `id` int(9) NOT NULL,
-  `name` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -50,7 +50,7 @@ INSERT INTO `groups` (`id`, `name`) VALUES
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -74,11 +74,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `oauth_access_tokens` (
-  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(100) NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `client_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `scopes` text DEFAULT NULL,
   `revoked` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -92,10 +92,10 @@ CREATE TABLE `oauth_access_tokens` (
 --
 
 CREATE TABLE `oauth_auth_codes` (
-  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(100) NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `client_id` bigint(20) UNSIGNED NOT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text DEFAULT NULL,
   `revoked` tinyint(1) NOT NULL,
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -109,10 +109,10 @@ CREATE TABLE `oauth_auth_codes` (
 CREATE TABLE `oauth_clients` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `secret` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `provider` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `redirect` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `secret` varchar(100) DEFAULT NULL,
+  `provider` varchar(255) DEFAULT NULL,
+  `redirect` text NOT NULL,
   `personal_access_client` tinyint(1) NOT NULL,
   `password_client` tinyint(1) NOT NULL,
   `revoked` tinyint(1) NOT NULL,
@@ -155,8 +155,8 @@ INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `u
 --
 
 CREATE TABLE `oauth_refresh_tokens` (
-  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `access_token_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(100) NOT NULL,
+  `access_token_id` varchar(100) NOT NULL,
   `revoked` tinyint(1) NOT NULL,
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -169,11 +169,11 @@ CREATE TABLE `oauth_refresh_tokens` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -196,7 +196,7 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 
 CREATE TABLE `schools_years` (
   `id` int(9) NOT NULL,
-  `school_year` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+  `school_year` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -214,11 +214,11 @@ INSERT INTO `schools_years` (`id`, `school_year`) VALUES
 --
 
 CREATE TABLE `sessions` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(255) NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `payload` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` text NOT NULL,
   `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -230,7 +230,7 @@ CREATE TABLE `sessions` (
 
 CREATE TABLE `slots` (
   `id` int(9) NOT NULL,
-  `slot` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+  `slot` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -317,7 +317,7 @@ INSERT INTO `slots` (`id`, `slot`) VALUES
 
 CREATE TABLE `subjects` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -341,15 +341,15 @@ INSERT INTO `subjects` (`id`, `name`) VALUES
 
 CREATE TABLE `teachers` (
   `id` int(9) NOT NULL,
-  `cif` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `cif` varchar(9) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `phone` int(9) NOT NULL,
-  `name` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `surname1` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `surname2` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `role` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `status` varchar(20) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'inactivo',
+  `name` varchar(50) NOT NULL,
+  `surname1` varchar(50) NOT NULL,
+  `surname2` varchar(50) NOT NULL,
+  `role` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'inactivo',
   `id_address_teacher` int(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -361,10 +361,10 @@ CREATE TABLE `teachers` (
 
 CREATE TABLE `teachers_addresses` (
   `id` int(9) NOT NULL,
-  `address` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `city` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
   `zip` int(5) NOT NULL,
-  `province` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+  `province` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -426,15 +426,15 @@ INSERT INTO `times_slots` (`id`, `id_slot`, `id_group`, `id_school_year`, `id_su
 
 CREATE TABLE `users` (
   `id` int(9) NOT NULL,
-  `cif` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `cif` varchar(9) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `phone` int(9) NOT NULL,
-  `name` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `surname1` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `surname2` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `role` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `status` varchar(20) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'inactivo',
+  `name` varchar(50) NOT NULL,
+  `surname1` varchar(50) NOT NULL,
+  `surname2` varchar(50) NOT NULL,
+  `role` varchar(50) DEFAULT 'user',
+  `status` varchar(20) NOT NULL DEFAULT 'inactivo',
   `id_address_user` int(9) DEFAULT NULL,
   `id_group` int(9) DEFAULT NULL,
   `id_user` int(9) DEFAULT NULL,
@@ -449,7 +449,12 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `cif`, `email`, `password`, `phone`, `name`, `surname1`, `surname2`, `role`, `status`, `id_address_user`, `id_group`, `id_user`, `updated_at`, `created_at`) VALUES
 (7, '31018613p', 'fjcamposgutierrez@gmail.com', '$2y$10$EHrhCyNOttYUIuRY5zf5bezh3HgD22sapnb4U9LuS2I5AHa1/mUka', 628191877, 'francisco', 'campos', 'gutierrez', 'admin', 'inactivo', NULL, NULL, NULL, '2023-03-15', '2023-03-15'),
 (8, '123465789', 'javi@mail.com', '123456789', 624624624, 'javi', 'javi', 'javi', 'admin', 'inactivo', NULL, NULL, NULL, NULL, NULL),
-(10, '14785236', 'paco@mail.com', '$2y$10$qsRx57HQS/XBnw1Kzj.6UeNBJS5M/R2r.MGkSoxielf17ATebtkSG', 628191877, 'paco', 'paco', 'paco', 'user', 'inactive', NULL, NULL, NULL, '2023-03-17', '2023-03-17');
+(10, '14785236', 'paco@mail.com', '$2y$10$Q2.sv7XyYetNCGQ8m.SEE.TeD75DIQgdzWdJruWJWEhFJc/A/gGKG', 555555555, 'paco', 'paco', 'paco', 'user', 'inactive', NULL, NULL, NULL, '2023-06-04', '2023-03-17'),
+(11, '532423534', 'carlos@mail.com', '$2y$10$Q2.sv7XyYetNCGQ8m.SEE.TeD75DIQgdzWdJruWJWEhFJc/A/gGKG', 628191877, 'paco', 'paco', 'paco', 'admin', 'inactive', NULL, NULL, NULL, '2023-03-17', '2023-03-17'),
+(12, '6325214B', 'juan@mail.com', '$2y$10$uBHOSTBEuUgl8axXtX43ruXJqjgyuPhyHLUNeHuTpy6L1/vLXGRR.', 234212345, 'Juan', 'Golondrina', 'Cum', 'user', 'inactivo', NULL, NULL, NULL, '2023-06-04', '2023-05-28'),
+(14, '36215458G', 'manolo@mail.com', '$2y$10$DJRncfkKkffsTX/iTEX0luUsZ88ThEkXb9uI/VuG4NvTWUpcXDDpO', 654125487, 'Manolo', 'Manolo', 'Manolo', 'user', 'inactivo', NULL, NULL, NULL, '2023-06-12', '2023-06-12'),
+(15, '36541456L', 'marta@mail.com', '$2y$10$qGfuU1wJpsyIxYKeSOSvq.yniDSohEyGH5bEHdRSHUQIWtpB/TsPm', 654874521, 'Marta', 'Marta', 'Marta', 'user', 'inactivo', NULL, NULL, NULL, '2023-06-13', '2023-06-13'),
+(16, '32125479L', 'dani@mail.com', '$2y$10$T84l1UXNnRDuKYl1ZJFjCOpiDO8Uuqyu4DmL0Wqi6U543h5S5xtMK', 632541452, 'dani', 'dani', 'dani', 'user', 'inactivo', NULL, NULL, NULL, '2023-06-13', '2023-06-13');
 
 -- --------------------------------------------------------
 
@@ -459,10 +464,10 @@ INSERT INTO `users` (`id`, `cif`, `email`, `password`, `phone`, `name`, `surname
 
 CREATE TABLE `users_addresses` (
   `id` int(9) NOT NULL,
-  `address` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `city` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
   `zip` int(5) NOT NULL,
-  `province` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+  `province` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -474,7 +479,7 @@ CREATE TABLE `users_addresses` (
 CREATE TABLE `users_logs` (
   `id` int(9) NOT NULL,
   `date` datetime NOT NULL,
-  `type` int(11) NOT NULL,
+  `type` varchar(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -485,18 +490,20 @@ CREATE TABLE `users_logs` (
 --
 
 INSERT INTO `users_logs` (`id`, `date`, `type`, `id_user`, `created_at`, `updated_at`) VALUES
-(13, '2023-04-16 13:52:14', 1, 8, NULL, NULL),
-(14, '2023-04-16 14:51:30', 1, 7, NULL, NULL),
-(15, '2023-05-04 00:00:00', 0, 7, '2023-05-04 00:00:00', '2023-05-04 00:00:00'),
-(16, '2023-05-04 00:00:00', 0, 7, '2023-05-04 20:29:59', '2023-05-04 20:29:59'),
-(17, '2023-05-04 00:15:00', 0, 7, '2023-05-04 20:40:02', '2023-05-04 20:40:02'),
-(18, '2023-05-04 20:45:00', 1, 7, '2023-05-04 20:41:22', '2023-05-04 20:41:22'),
-(19, '2023-09-08 18:13:00', 1, 7, '2023-05-09 16:13:52', '2023-05-09 16:13:52'),
-(20, '2023-05-10 18:30:00', 0, 7, '2023-05-10 17:15:02', '2023-05-10 17:15:02'),
-(21, '2023-05-10 19:30:00', 0, 7, '2023-05-10 17:16:24', '2023-05-10 17:16:24'),
-(22, '2023-05-10 20:30:00', 0, 7, '2023-05-10 17:23:27', '2023-05-10 17:23:27'),
-(23, '2023-05-11 22:09:57', 0, 7, NULL, NULL),
-(24, '2023-05-11 22:10:44', 0, 7, NULL, NULL);
+(13, '2023-04-16 13:52:14', '1', 8, NULL, NULL),
+(14, '2023-04-16 14:51:30', '1', 7, NULL, NULL),
+(16, '2023-05-04 00:00:00', '0', 7, '2023-05-04 20:29:59', '2023-05-04 20:29:59'),
+(17, '2023-05-04 00:15:00', '0', 7, '2023-05-04 20:40:02', '2023-05-04 20:40:02'),
+(18, '2023-05-04 20:45:00', '1', 7, '2023-05-04 20:41:22', '2023-05-04 20:41:22'),
+(19, '2023-09-08 18:13:00', '1', 7, '2023-05-09 16:13:52', '2023-05-09 16:13:52'),
+(20, '2023-05-10 18:30:00', '0', 7, '2023-05-10 17:15:02', '2023-05-10 17:15:02'),
+(21, '2023-05-10 19:30:00', '0', 7, '2023-05-10 17:16:24', '2023-05-10 17:16:24'),
+(22, '2023-05-10 20:30:00', '0', 7, '2023-05-10 17:23:27', '2023-05-10 17:23:27'),
+(134, '2023-06-12 01:36:08', '0', 10, NULL, NULL),
+(135, '2023-06-12 01:41:19', '0', 10, NULL, NULL),
+(136, '2023-06-12 01:43:06', '1', 10, NULL, NULL),
+(137, '2023-06-12 19:03:02', '0', 10, NULL, NULL),
+(138, '2023-06-12 21:20:00', '0', 10, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -703,7 +710,7 @@ ALTER TABLE `times_slots`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `users_addresses`
@@ -715,7 +722,7 @@ ALTER TABLE `users_addresses`
 -- AUTO_INCREMENT de la tabla `users_logs`
 --
 ALTER TABLE `users_logs`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- Restricciones para tablas volcadas
