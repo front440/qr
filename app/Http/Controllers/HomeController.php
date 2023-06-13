@@ -27,7 +27,7 @@ class HomeController extends Controller
         switch ($user->role) {
             case "admin":                
                 // return view('admin.dash.index', compact($user));
-                return redirect('/admin/home');
+                return redirect('admin/alumnos/datos');
                 break;
             case "user":
                 return redirect('/user/home');
