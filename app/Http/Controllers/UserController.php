@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\UserLog;
 use Illuminate\Http\Request;
 use App\Models\User;
+
 class UserController extends Controller
 {
     /**
@@ -13,16 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-
-        //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
-        $query = \DB::select("SELECT u.name, u.surname1, u.surname2, u.email, u.phone, u.cif FROM users u");
-        // dd($query);
         $alumnos = User::all();
-        $registroUsuarios = UserLog::all();
-        $registroUsuarios = \DB::table('users_logs')
-        ->where('type', '=', '1')
-        ->get();
-        return view('admin.alumnos', ["alumnos" => $alumnos,]);
+
+        return view('admin.alumnos', ["alumnos" => $alumnos]);
     }
 
 
@@ -31,7 +26,8 @@ class UserController extends Controller
      *
      * @param $string
      */
-    public function normalize($string){
+    public function normalize($string)
+    {
         $originales = 'ÁÉÍÓÚáéíóú';
         $modificadas = 'AEIOUaeiou';
         $string = utf8_decode($string);
@@ -101,7 +97,9 @@ class UserController extends Controller
      */
     public function edit(Request $request)
     {
-        $result = UserLog::find($request->id);
+        $result = User::find($request->id);
+
+        // dd($result);
 
         if ($result) {
             return response()->json([
@@ -124,30 +122,30 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-         // dd("EE");
-         $input = UserLog::find($request->id);
-         // dd($request);
-         $input->name = $request->Nombre;
-         $input->surname1 = $request->Apellido1;
-         $input->surname2 = $request->Apellido2;
-         $input->email = $request->Email;
-         $input->phone = $request->Telefono;
-         $input->cif = $request->Dni;
-         $input->save();
-         if ($input) {
-             return response()->json([
-                 'message' => "Data Saved",
-                 "code"    => 200,
-                 "data"    => $input
-             ]);
-         } else {
-             return response()->json([
-                 'message' => "Internal Server Error",
-                 "code"    => 500
-             ]);
-         }
+        //  dd("EE");
+        $user = User::find($request->id);
+        //  dd($request);
+        $user->name = $request->name;
+        $user->surname1 = $request->surname1;
+        $user->surname2 = $request->surname2;
+        $user->phone = $request->phone;
+
+        $user->save();
+
+        if ($user) {
+            return response()->json([
+                'message' => "Data Saved",
+                "code"    => 200,
+                "data"    => $user
+            ]);
+        } else {
+            return response()->json([
+                'message' => "Internal Server Error",
+                "code"    => 500
+            ]);
+        }
     }
 
     /**
@@ -182,13 +180,13 @@ class UserController extends Controller
     {
 
         $value = $request->session()->get('key');
-        
+
         return view("admin.entrada");
     }
 
-  
 
-    
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -205,18 +203,18 @@ class UserController extends Controller
         return view("admin.salida", compact($value));
     }
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function get()
     {
-       //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
-       $query = \DB::select("SELECT u.name, u.surname1, u.surname2, u.email, u.phone, u.cif FROM users u");
-       // dd($query);
-       $user = User::all();
-       
-       return datatables()->of($user)->toJson();
+        //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
+        $query = \DB::select("SELECT u.name, u.surname1, u.surname2, u.email, u.phone, u.cif FROM users u");
+        // dd($query);
+        $user = User::all();
+
+        return datatables()->of($user)->toJson();
     }
 }

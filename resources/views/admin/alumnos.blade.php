@@ -2,25 +2,21 @@
 
 @section('title', 'Dashboard')
 
-@section('plugins.FullCalendar', true)
 @section('plugins.Sweetalert2', true)
 @section('plugins.Datatables', true)
 
 @section('content_header')
-
-<h1 class="text-center">TABLA DE ALUMNOS</h1>
+    <h1 class="text-center">Alumnos</h1>
 @stop
+
 @section('content')
 
-  
-
     <!-- Modal Editar -->
-    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalLabelEdit"
-        aria-hidden="true">
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalLabelEdit" aria-hidden="true">
         <form action="" id="formEdit">
             {{ csrf_field() }}
             <div class="modal-dialog" role="document">
-                <input type="hidden" name="id" id="idInputLog">
+                <input type="hidden" name="id" id="idUser">
 
                 <div class="modal-content">
                     <div class="modal-header">
@@ -30,11 +26,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                    <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('Nombre') }}</label>
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end"
+                                style="color: #000000;">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text"
+                                    class="form-control @error('name') is-invalid @enderror" name="name"
+                                    value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -45,10 +44,13 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="surname1" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('Apellido 1') }}</label>
+                            <label for="surname1" class="col-md-4 col-form-label text-md-end"
+                                style="color: #000000;">{{ __('Apellido 1') }}</label>
 
                             <div class="col-md-6">
-                                <input id="surname1" type="text" class="form-control @error('surname1') is-invalid @enderror" name="surname1" value="{{ old('surname1') }}" required autocomplete="surname1" autofocus>
+                                <input id="surname1" type="text"
+                                    class="form-control @error('surname1') is-invalid @enderror" name="surname1"
+                                    value="{{ old('surname1') }}" required autocomplete="surname1" autofocus>
 
                                 @error('surname1')
                                     <span class="invalid-feedback" role="alert">
@@ -59,10 +61,13 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="surname2" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('Apellido 2') }}</label>
+                            <label for="surname2" class="col-md-4 col-form-label text-md-end"
+                                style="color: #000000;">{{ __('Apellido 2') }}</label>
 
                             <div class="col-md-6">
-                                <input id="surname2" type="text" class="form-control @error('surname2') is-invalid @enderror" name="surname2" value="{{ old('surname2') }}" required autocomplete="surname2" autofocus>
+                                <input id="surname2" type="text"
+                                    class="form-control @error('surname2') is-invalid @enderror" name="surname2"
+                                    value="{{ old('surname2') }}" required autocomplete="surname2" autofocus>
 
                                 @error('surname2')
                                     <span class="invalid-feedback" role="alert">
@@ -73,10 +78,13 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('Correo') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end"
+                                style="color: #000000;">{{ __('Correo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="text"
+                                    class="form-control @error('email') is-invalid @enderror" name="email"
+                                    value="{{ old('email') }}" required autocomplete="email" autofocus disabled>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -87,10 +95,13 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="phone" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('Teléfono') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-end"
+                                style="color: #000000;">{{ __('Teléfono') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                                <input id="phone" type="text"
+                                    class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                    value="{{ old('phone') }}" required autocomplete="phone" autofocus>
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -101,10 +112,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="cif" class="col-md-4 col-form-label text-md-end" style="color: #000000;">{{ __('DNI') }}</label>
+                            <label for="cif" class="col-md-4 col-form-label text-md-end"
+                                style="color: #000000;">{{ __('DNI') }}</label>
 
                             <div class="col-md-6">
-                                <input id="cif" type="text" class="form-control @error('cif') is-invalid @enderror" name="cif" value="{{ old('cif') }}" required autocomplete="cif" autofocus>
+                                <input id="cif" type="text" class="form-control @error('cif') is-invalid @enderror"
+                                    name="cif" value="{{ old('cif') }}" required autocomplete="cif" autofocus disabled>
 
                                 @error('cif')
                                     <span class="invalid-feedback" role="alert">
@@ -113,121 +126,104 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            id="closeEdit">Cerrar</button>
-                        <button type="button" class="btn btn-primary" id="submitEditar">Guardar Cambios</button>
-                    </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                id="closeEdit">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="submitEditar">Guardar Cambios</button>
                         </div>
-
-                       
-                         
-                        </div>
-
-                     
-
-
                     </div>
-                  
+
+
+
                 </div>
-        </form>
+
+
+
+
+            </div>
+
+        </div>
     </div>
-    </div>
-    <!-- Modal Editar -->
-<div class="card">
-    <div class="card-header">Alumnos</div>
-    <div class="card-body">
-
-        <table id="table" class="table  table-bordered dt-responsive nowrap" style="width:100%">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Apellido 1</th>
-                    <th scope="col">Apellido 2</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-
-    </div>
-
 </div>
+</form>
+    <!-- Modal Editar -->
+    <div class="card">
+        <div class="card-header">Alumnos</div>
+        <div class="card-body">
+
+            <table id="table" class="table  table-bordered dt-responsive nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Apellido 1</th>
+                        <th scope="col">Apellido 2</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
 @stop
 
 @section('css')
 
-<link rel="stylesheet" href="/css/admin_custom.css">
-<style>
-    .table {
-        font-size: 14px;
-    }
+    <link rel="stylesheet" href="/css/admin_custom.css">
 
-    th {
-        text-align: center;
-        font-weight: bold;
-    }
-
-    td {
-        vertical-align: middle;
-        text-align: center;
-    }
-</style>
 @stop
 @section('js')
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.3/dist/umd/popper.min.js" integrity="sha384-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
-        let table = $('#table');
-      
-//Datatable
-        table.DataTable({
-            responsive: true,
-            autoWidth: false,
-            // traducción de DataTables
-            language: {
-                "search": "Buscar",
-                "lengthMenu": "Mostrar _MENU_  registros por página",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "paginate": {
-                    "previous": "Anterior",
-                    "next": "Siguiente",
-                    "first": "Primero",
-                    "last": "Último"
-                }
-            },
-            "ajax": "{{ route('user.get') }}",
-            "columns": [{
-                    data: "name"
-                },
-                {
-                    data: "email"
-                },
-                {
-                    data: "surname1"
-                },
-                {
-                    data: "surname2"
-                },
-                {
-                    data: "phone"
-                },
-                {
-                    data: "cif"
-                },
+            let table = $('#table');
 
-                {
+            //Datatable
+            table.DataTable({
+                responsive: true,
+                autoWidth: false,
+                // traducción de DataTables
+                language: {
+                    "search": "Buscar",
+                    "lengthMenu": "Mostrar _MENU_  registros por página",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente",
+                        "first": "Primero",
+                        "last": "Último"
+                    }
+                },
+                "ajax": "{{ route('user.get') }}",
+                "columns": [{
+                        data: "name"
+                    },
+                    {
+                        data: "email"
+                    },
+                    {
+                        data: "surname1"
+                    },
+                    {
+                        data: "surname2"
+                    },
+                    {
+                        data: "phone"
+                    },
+                    {
+                        data: "cif"
+                    },
+
+                    {
                         "data": null,
                         render: function(data, type, row) {
                             return '<button id="delete" class="btn btn-danger delete" data-id="' +
@@ -237,17 +233,18 @@
                                 '" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-edit"></i></button>';
                         }
                     },
-            
-            ]
-        });
-   // End Datatable
-          // Edit
-          $(document).on('click', '.edit', function() {
+
+                ]
+            });
+            // End Datatable
+
+            // Edit
+            $(document).on('click', '.edit', function() {
                 // let id = $(this).data('id');
-                idInputLog = $(this).data('id');
-                document.getElementById("idInputLog").value = idInputLog;
+                idUser = $(this).data('id');
+                document.getElementById("idUser").value = idUser;
                 $.ajax({
-                    url: "{{ route('entrada.edit') }}",
+                    url: "{{ route('usuario.edit') }}",
                     type: "post",
                     dataType: "json",
                     data: {
@@ -259,34 +256,23 @@
                         console.log(response);
                         usuarioRespuesta = response.data;
                         // $("#close").click();
-                        $("idInputLog").value = $(this).data('id');
+                        $("idUser").value = $(this).data('id');
 
-                        // seleccionamos el usuario
-                        for (usuario of usuarios) {
-                            if (response.data.id_user == usuario.id) {
-                                $('#usuarioEditar').append('<option value="' + usuario.id +
-                                    '" selected>' + usuario.name + '</option>');
-                            } else {
-                                $('#usuarioEditar').append('<option value="' + usuario.id +
-                                    '">' + usuario.name + '</option>');
-                            }
-                        };
+                        $('#name').val(usuarioRespuesta.name);
+                        $('#surname1').val(usuarioRespuesta.surname1);
+                        $('#surname2').val(usuarioRespuesta.surname2);
+                        $('#email').val(usuarioRespuesta.email);
+                        $('#email').val(usuarioRespuesta.email);
+                        $('#cif').val(usuarioRespuesta.cif);
+                        $('#phone').val(usuarioRespuesta.phone);
 
-                        // Seleccionamos el tipo de entrada
-                        usuarioRespuesta.type ? $('#tipoEditar option')[0].selected = false : $(
-                            '#tipoEditar option')[0].selected = true;
-                        // $('#tipoEditar')
-
-                        // Seleccionamos fecha
-                        // $('#fechaEditar').text(usuarioRespuesta.date);
-                        document.getElementById("fechaEditar").value = usuarioRespuesta.date;
-                        // table.ajax.reload();
                     }
                 });
             });
             // End Edit
-// Save Edit Input
-$('#submitEditar').click(function(e) {
+
+            // Save Edit Input
+            $('#submitEditar').click(function(e) {
                 e.preventDefault();
 
                 $.ajax({
@@ -303,8 +289,8 @@ $('#submitEditar').click(function(e) {
                 });
             });
             // End Save Edit Input
- // Delete Log
- $(document).on('click', '#delete', function() {
+            // Delete Log
+            $(document).on('click', '#delete', function() {
                 // Swal.fire({
 
                 //     title: '¿Quieres borrar el registro?',
@@ -370,7 +356,7 @@ $('#submitEditar').click(function(e) {
                 })
             })
             // End Delete Log
-    });
-</script>
+        });
+    </script>
 
 @stop

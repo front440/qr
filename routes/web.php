@@ -64,11 +64,13 @@ Route::group([
 
     Route::post('/alumnos/entradas/add', [UserInputLogController::class, 'store'])->name('entrada.store');
     
+    // Entradas
     Route::get('/datatables/user-inputs', [UserInputLogController::class, 'get'])->name('entrada.get');
     Route::post('/datatables/user-inputs-edit', [UserInputLogController::class, 'edit'])->name('entrada.edit'); // Edit input
     Route::post('/datatables/user-inputs-update', [UserInputLogController::class, 'update'])->name('entrada.update');
     Route::post('/datatables/user-inputs-delete', [UserInputLogController::class, 'destroy'])->name('entrada.delete'); // Delete input // Update input
 
+    // Usuarios
     Route::get('/usuario/user-inputs', [UserController::class, 'get'])->name('usuario.get');
     Route::post('/usuario/user-inputs-edit', [UserController::class, 'edit'])->name('usuario.edit'); // Edit input
     Route::post('/usuario/user-inputs-update', [UserController::class, 'update'])->name('usuario.update');
