@@ -52,7 +52,6 @@
 
 @stop
 
-
 @section('js')
 <script>
         // Función para actualizar el código QR cada 3000 milisegundos
