@@ -154,9 +154,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $input = UserLog::find($request->id)->delete();
+        $input = User::find($request->id)->delete();
         if ($input) {
             return response()->json([
                 'message' => "Input Deleted!",
