@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="SCQR.png" alt="Logo de mi aplicación">
+</p>
+
 ## SCQR
 Este repositorio contiene una aplicación web desarrollada en Laravel que proporciona un panel de control y un sistema de acceso mediante códigos QR para un centro educativo.
 
