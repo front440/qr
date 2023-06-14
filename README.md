@@ -24,10 +24,12 @@
 
 <h2>Instalación</h2>
 <ol>
+  
   <li>Clona este repositorio en tu máquina local.</li>
+  <li>El fichero qr2.sql contiene la estructura necesaria para que funcione la aplicación, se deberá importar este fichero en la base de datos que se usará para la aplicación</li>
   <li>Ejecuta el comando <code>composer install</code> para instalar las dependencias de Laravel.</li>
+  <li>Ejecuta el comando <code>composer update</code> en el caso de que <code>composer install</code> muestre algún tipo de fallo</li>
   <li>Crea un archivo <code>.env</code> a partir del archivo <code>.env.example</code> y configura la base de datos y otros ajustes necesarios.</li>
   <li>Ejecuta el comando <code>php artisan key:generate</code> para generar una clave de aplicación única.</li>
-  <li>Ejecuta el comando <code>php artisan migrate</code> para migrar las tablas de la base de datos.</li>
   <li>Ejecuta el comando <code>php artisan serve</code> para iniciar el servidor de desarrollo.</li>
 </ol>
