@@ -15,11 +15,19 @@ class UserOutLogController extends Controller
      */
     public function index()
     {
+        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 1 ORDER BY ul.date DESC");
+        // dd($query);
+
+        // return datatables()->of($query)->toJson();
+
         $usuarios = User::all();
+        $registrosEntrada = UserLog::where('type', '=', '1');
+        $registrosEntrada = UserLog::all();
+        $registrosEntrada = \DB::table('users_logs')
+            ->where('type', '=', '1')
+            ->get();
+        return view('admin.log.outlog', ["registrosEntrada" => $registrosEntrada, "usuarios" => $usuarios]);
 
-
-        // return view('admin.log.inputlog', ["registrosEntrada" => $registrosEntrada, "usuarios" => $usuarios]);
-        return view('admin.log.outlog', [ "usuarios" => $usuarios]);
     }
 
     /**
@@ -62,23 +70,11 @@ class UserOutLogController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request)
     {
         $result = UserLog::find($request->id);
@@ -157,8 +153,7 @@ class UserOutLogController extends Controller
      */
     public function get()
     {
-       //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
-       $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id AND ul.type = 0 ORDER BY ul.date DESC");
+       $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id AND ul.type = 1 ORDER BY ul.date DESC");
        // dd($query);
 
        return datatables()->of($query)->toJson();

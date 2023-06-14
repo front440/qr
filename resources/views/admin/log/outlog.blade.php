@@ -41,8 +41,8 @@
                             <div class="form-group col-6">
                                 <label for="tipo">tipo</label>
                                 <select class="form-control" name="tipo" id="tipo">
-                                    <option value="0" selected>Salida</option>
-                                    <option value="1">Entrada</option>
+                                    <option value="0" selected>Entrada</option>
+                                    <option value="1">Salida</option>
                                 </select>
                             </div>
                             <div class="form-group col-6">
@@ -93,8 +93,8 @@
                             <div class="form-group col-6">
                                 <label for="tipo">tipo</label>
                                 <select class="form-control" name="tipo" id="tipoEditar">
-                                    <option value="0" selected>Salida</option>
-                                    <option value="1">Entrada</option>
+                                    <option value="0" selected>Entrada</option>
+                                    <option value="1">Salida</option>
                                 </select>
                             </div>
                             <div class="form-group col-6">
@@ -210,9 +210,9 @@
                         "data": null,
                         render: function(data, type, row) {
                             if (row.type == 0) {
-                                return 'Salida';
-                            } else {
                                 return 'Entrada';
+                            } else {
+                                return 'Salida';
                             }
                         }
                     },

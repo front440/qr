@@ -15,9 +15,18 @@ class UserInputLogController extends Controller
      */
     public function index()
     {
-        $usuarios = User::all();
+        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date DESC");
+        // dd($query);
 
-        return view('admin.log.inputlog', [ "usuarios" => $usuarios]);
+        // return datatables()->of($query)->toJson();
+
+        $usuarios = User::all();
+        $registrosEntrada = UserLog::where('type', '=', '0');
+        $registrosEntrada = UserLog::all();
+        $registrosEntrada = \DB::table('users_logs')
+            ->where('type', '=', '0')
+            ->get();
+        return view('admin.log.inputlog', ["registrosEntrada" => $registrosEntrada, "usuarios" => $usuarios]);
     }
     /**
      * Show the form for creating a new resource.
@@ -135,8 +144,7 @@ class UserInputLogController extends Controller
      */
     public function get()
     {
-        //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
-        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 1 ORDER BY ul.date ASC");
+        $query = \DB::select("SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date DESC");
         // dd($query);
 
         return datatables()->of($query)->toJson();
