@@ -2,23 +2,32 @@
   <img src="SCQR.png" alt="Logo de mi aplicación">
 </p>
 
-## SCQR
-Este repositorio contiene una aplicación web desarrollada en Laravel que proporciona un panel de control y un sistema de acceso mediante códigos QR para un centro educativo.
+<h2>SCQR</h2>
+<p>
+  Este repositorio contiene una aplicación web desarrollada en Laravel que proporciona un panel de control y un sistema de acceso mediante códigos QR para un centro educativo.
+</p>
 
-##Características
-Panel de Control (AdminLTE): La aplicación cuenta con un panel de control intuitivo y fácil de usar que permite a los administradores y al personal del centro educativo gestionar diversos aspectos del alumnado, como registros de entrada y salida, usuarios, etc...
+<h2>Características</h2>
+<p>
+  Panel de Control (AdminLTE): La aplicación cuenta con un panel de control intuitivo y fácil de usar que permite a los administradores y al personal del centro educativo gestionar diversos aspectos del alumnado, como registros de entrada y salida, usuarios, etc...
+</p>
+<p>
+  Acceso mediante Códigos QR: La aplicación utiliza códigos QR únicos asociados a cada usuario autorizado (estudiantes) para controlar los absentismos. Al escanear el código QR en los puntos de acceso designados, se guarda un registro con la información del usuario y la hora del escaneo.
+</p>
 
-Acceso mediante Códigos QR: La aplicación utiliza códigos QR únicos asociados a cada usuario autorizado (estudiantes) para controlar los absentismos. Al escanear el código QR en los puntos de acceso designados, se guarda un registro con la información del usuario y la hora del escaneo.
+<h2>Tecnologías Utilizadas</h2>
+<ul>
+  <li>Laravel</li>
+  <li>Javascript</li>
+  <li>MySQL</li>
+</ul>
 
-##Tecnologías Utilizadas
-Laravel
-Javascript
-MySQL
-
-##Instalación
-Clona este repositorio en tu máquina local.
-Ejecuta el comando composer install para instalar las dependencias de Laravel.
-Crea un archivo .env a partir del archivo .env.example y configura la base de datos y otros ajustes necesarios.
-Ejecuta el comando php artisan key:generate para generar una clave de aplicación única.
-Ejecuta el comando php artisan migrate para migrar las tablas de la base de datos.
-Ejecuta el comando php artisan serve para iniciar el servidor de desarrollo.
+<h2>Instalación</h2>
+<ol>
+  <li>Clona este repositorio en tu máquina local.</li>
+  <li>Ejecuta el comando <code>composer install</code> para instalar las dependencias de Laravel.</li>
+  <li>Crea un archivo <code>.env</code> a partir del archivo <code>.env.example</code> y configura la base de datos y otros ajustes necesarios.</li>
+  <li>Ejecuta el comando <code>php artisan key:generate</code> para generar una clave de aplicación única.</li>
+  <li>Ejecuta el comando <code>php artisan migrate</code> para migrar las tablas de la base de datos.</li>
+  <li>Ejecuta el comando <code>php artisan serve</code> para iniciar el servidor de desarrollo.</li>
+</ol>
