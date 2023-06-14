@@ -184,10 +184,6 @@ class UserController extends Controller
         return view("admin.entrada");
     }
 
-
-
-
-
     /**
      * Remove the specified resource from storage.
      *
@@ -210,7 +206,11 @@ class UserController extends Controller
      */
     public function get()
     {
-        $query = \DB::select("SELECT u.name, u.surname1, u.surname2, u.email, u.phone, u.cif FROM users u WHERE u.role = 'user'");
-        return datatables()->of($query)->toJson();
+        //SELECT ul.id, ul.date, ul.type, u.name FROM users_logs ul, users u WHERE ul.id_user = u.id and ul.type = 0 ORDER BY ul.date ASC; 
+        $query = \DB::select("SELECT u.name, u.surname1, u.surname2, u.email, u.phone, u.cif FROM users u");
+        // dd($query);
+        $user = User::all();
+
+        return datatables()->of($user)->toJson();
     }
 }
